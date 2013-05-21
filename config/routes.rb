@@ -1,4 +1,7 @@
 AppFunnel::Application.routes.draw do
+  root :to => "profiles#index"
+
+  resources :profiles
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
