@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+gem 'devise', '2.1.0'
+gem 'cancan', '1.6.7'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +20,24 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :test, :development do
+  gem 'rspec-rails', '~> 2.11'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-debugger'
+  gem 'better-errors'
+  gem 'annotate'
+  gem 'meta_request'
+end
+
+group :test do
+  gem 'capybara', '1.1.2'
+  gem 'email_spec', '1.2.1'
+  gem 'simplecov', :require => false
+  gem 'factory_girl', '2.6.4'
+  gem 'launchy'
 end
 
 gem 'jquery-rails'
