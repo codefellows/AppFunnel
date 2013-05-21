@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+gem 'strong_parameters'
+
 gem 'devise', '2.1.0'
 gem 'cancan', '1.6.7'
 
@@ -27,7 +29,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-debugger'
-  gem 'better-errors'
+  gem 'better_errors'
   gem 'annotate'
   gem 'meta_request'
 end
