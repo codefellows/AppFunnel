@@ -1,2 +1,10 @@
 <h2>Learn To Code, Get a Job. Guaranteed.</h2>
 <%= link_to "New Profile", new_profile_path %>
+
+<% @profiles.each do |profile| %>
+  <ul>
+    <li>
+      <%= link_to profile.first_name + " " + profile.last_name, profile %>
+    </li>
+  </ul>
+<% end %>

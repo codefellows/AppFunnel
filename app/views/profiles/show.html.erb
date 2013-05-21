@@ -1,1 +1,10 @@
+<a href='/'>Index</a>
 <h2>Here You Are</h2>
+<% @display_attributes.each do |key, value| %>
+  <%= key + ": " + value.to_s %>
+  <br>
+<% end %>
+
+<%= link_to "Update Profile", edit_profile_path(@profile) %>
+<%= link_to "Delete Profile", profile_path(@profile), method: :delete,
+  confirm: "Are you sure you want to delete your profile?" %>
