@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521214649) do
+ActiveRecord::Schema.define(:version => 20130522045729) do
+
+  create_table "apns", :force => true do |t|
+    t.integer  "applicant_id"
+    t.string   "employment"
+    t.string   "skype"
+    t.string   "gplus"
+    t.text     "why"
+    t.text     "diligent"
+    t.text     "best"
+    t.text     "cssfloat"
+    t.text     "findout"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "applications", :force => true do |t|
+    t.string   "employment"
+    t.string   "skype"
+    t.string   "gplus"
+    t.string   "linkedin"
+    t.text     "why"
+    t.text     "diligence"
+    t.text     "bestthing"
+    t.text     "cssfloat"
+    t.text     "findout"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
