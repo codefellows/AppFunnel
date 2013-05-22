@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "editing an apn" do
+feature "Editing apns" do
   let!(:profile) { Factory(:profile) }
   let!(:apn) { Factory(:apn) }
 
