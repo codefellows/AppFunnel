@@ -14,7 +14,6 @@ feature "Creating Apns" do
     click_button "Create Apn"
     page.should have_content("Application submitted.")
     page.should have_content("because I really want to!")
-    binding.pry
   end
 
 end

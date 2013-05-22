@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522045729) do
+ActiveRecord::Schema.define(:version => 20130522060645) do
 
   create_table "apns", :force => true do |t|
-    t.integer  "applicant_id"
     t.string   "employment"
     t.string   "skype"
     t.string   "gplus"
@@ -23,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20130522045729) do
     t.text     "best"
     t.text     "cssfloat"
     t.text     "findout"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "applications", :force => true do |t|
