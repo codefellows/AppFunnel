@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522060645) do
+ActiveRecord::Schema.define(:version => 20130522062230) do
 
   create_table "apns", :force => true do |t|
     t.string   "employment"
