@@ -1,4 +1,4 @@
-<%= form_for(@apn) do |f| %>
+<%= form_for [@profile, @apn] do |f| %>
   <p>
     <%= f.label :why %>
     <%= f.text_area :why %>
@@ -33,4 +33,4 @@
   </p>
 
   <%= f.submit %>
-<%- end %>
+<% end %>

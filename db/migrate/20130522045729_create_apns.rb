@@ -11,7 +11,9 @@ class CreateApns < ActiveRecord::Migration
       t.text :cssfloat
       t.text :findout
 
+      t.references :profile
       t.timestamps
     end
+    add_index :apns, :profile_id
   end
 end

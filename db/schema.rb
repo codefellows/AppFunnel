@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522062230) do
+ActiveRecord::Schema.define(:version => 20130522045729) do
 
   create_table "apns", :force => true do |t|
+    t.integer  "applicant_id"
     t.string   "employment"
     t.string   "skype"
     t.string   "gplus"
@@ -22,23 +23,12 @@ ActiveRecord::Schema.define(:version => 20130522062230) do
     t.text     "best"
     t.text     "cssfloat"
     t.text     "findout"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "profile_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  create_table "applications", :force => true do |t|
-    t.string   "employment"
-    t.string   "skype"
-    t.string   "gplus"
-    t.string   "linkedin"
-    t.text     "why"
-    t.text     "diligence"
-    t.text     "bestthing"
-    t.text     "cssfloat"
-    t.text     "findout"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "apns", ["profile_id"], :name => "index_apns_on_profile_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
