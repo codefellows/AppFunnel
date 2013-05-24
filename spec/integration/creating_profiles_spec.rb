@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 feature "Creating profiles" do
+  before do
+    user = Factory(:user, email: "spanky@cavendish.com")
+    user.confirm!
+
+    visit '/'
+    fill_in "Email", with: "spanky@cavendish.com"
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+  end
 
   scenario "can create a profile" do
-    visit '/'
     click_link "New Profile"
     fill_in "First name", with: "Spanky"
     fill_in "Last name", with: "Cavendish"
@@ -20,7 +28,6 @@ feature "Creating profiles" do
   end
 
   scenario "cannot create a profile with missing info" do
-    visit '/'
     click_link "New Profile"
     fill_in "First name", with: "Spanky"
     fill_in "Last name", with: ""
