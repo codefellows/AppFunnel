@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   def index
     @profiles = Profile.all
@@ -11,6 +12,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.create(profile_params)
+    @profile.user = current_user
     if @profile.save
       flash[:notice] = "Your profile has been created."
       redirect_to @profile
