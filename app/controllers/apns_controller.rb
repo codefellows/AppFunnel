@@ -29,7 +29,7 @@ class ApnsController < ApplicationController
   def update
     if @apn.update_attributes(apn_params)
       flash[:notice] = "Your application has been updated."
-      redirect_to @apn
+      redirect_to [@profile, @apn]
     else
       flash[:alert] = "Your application hasn't been updated."
       render action: "edit"
@@ -49,7 +49,7 @@ class ApnsController < ApplicationController
     #     :employment, :findout, :gplus, :skype, :why)
     # end
     def apn_params
-      
+
       # params.require(:apn).permit!
       params.require(:apn).permit(
         :why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype)
