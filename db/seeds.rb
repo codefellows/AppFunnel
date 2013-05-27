@@ -8,7 +8,11 @@
 user = User.create(:email => "spanky@cavendish.com", :password => "password")
 user.confirm!
 
-Profile.create(first_name: "spanky", last_name: "cavendish", email: user.email,
+profile = Profile.create(first_name: "spanky", last_name: "cavendish", email: user.email,
                phone_number: "2065555555", city: "seattle", state: "WA",
                gender: "M")
+
+Apn.create(profile_id: profile.id, why: "because I want to", diligent: "archery buff",
+           cssfloat: "like root beat float", findout: "reggie told me", best: "q-tips",
+           employment: "what?", skype: "spankyonskype", gplus: "spanksterC")
 

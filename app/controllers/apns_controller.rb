@@ -19,7 +19,7 @@ class ApnsController < ApplicationController
 
   def show
     @apn_display_attributes = @apn.attributes
-    excluded_attributes = ["id", "applicant_id", "created_at", "updated_at"]
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
     @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
   end
 
