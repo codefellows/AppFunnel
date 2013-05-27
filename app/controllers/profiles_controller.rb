@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
 
   def show
     @display_attributes = @profile.attributes
-    excluded_attributes = ["id", "created_at", "updated_at"]
+    excluded_attributes = ["user_id", "id", "created_at", "updated_at"]
     @display_attributes.delete_if {|key| excluded_attributes.include? key }
   end
 
