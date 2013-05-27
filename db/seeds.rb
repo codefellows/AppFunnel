@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create(:email => "spanky@cavendish.com", :password => "password")
 user.confirm!
+
+Profile.create(first_name: "spanky", last_name: "cavendish", email: user.email,
+               phone_number: "2065555555", city: "seattle", state: "WA",
+               gender: "M")
+

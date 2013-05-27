@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522064317) do
+ActiveRecord::Schema.define(:version => 20130527205151) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(:version => 20130522064317) do
     t.string   "gender"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "essay"
+    t.integer  "education"
+    t.integer  "online"
+    t.integer  "fuzzy"
+    t.integer  "apn_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
