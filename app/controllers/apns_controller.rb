@@ -1,15 +1,16 @@
 class ApnsController < ApplicationController
+  before_filter :find_profile
   before_filter :find_apn, only: [:show, :edit, :update, :destroy]
 
   def new
-    @apn = Apn.new
+    @apn = @profile.build_apn
   end
 
   def create
-    @apn = Apn.create(apn_params)
+    @apn = @profile.build_apn(apn_params)
     if @apn.save
       flash[:notice] = "Application submitted."
-      redirect_to @apn
+      redirect_to [@profile, @apn]
     else
       flash[:alert] = "Application not submitted"
       render action: "new"
@@ -42,10 +43,23 @@ class ApnsController < ApplicationController
   end
 
   private
+    # def apn_params
+    #   params.require(:apn).permit(
+    #     :best, :cssfloat, :diligent,
+    #     :employment, :findout, :gplus, :skype, :why)
+    # end
     def apn_params
+      
+      # params.require(:apn).permit!
       params.require(:apn).permit(
-        :applicant_id, :best, :cssfloat, :diligent,
-        :employment, :findout, :gplus, :skype, :why)
+        :why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype)
+    end
+
+    def find_profile
+      @profile = Profile.find(params[:profile_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The profile you were looking for could not be found."
+      redirect_to root_path
     end
 
     def find_apn

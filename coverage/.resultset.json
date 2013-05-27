@@ -1,0 +1,35 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/Billy/Dev/AppFunnel/spec/support/factories/apn_factory.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/Billy/Dev/AppFunnel/spec/support/factories/profile_factory.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1369346326
+  }
+}
