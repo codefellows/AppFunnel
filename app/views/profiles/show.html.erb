@@ -6,7 +6,7 @@
 <% end %>
 <p>
   <% if @profile.apn %>
-    <%= link_to "View Application", apn_path(@profile) %>
+    <%= link_to "View Application", [@profile, @profile.apn] %>
   <% else %>
   <%= link_to "Create Application", new_profile_apn_path(@profile) %>
   <% end %>
