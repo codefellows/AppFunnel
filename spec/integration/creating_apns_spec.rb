@@ -1,18 +1,21 @@
 require 'spec_helper'
 
 feature "Creating Apns" do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:profile) { Factory(:profile, user_id: user.id) } # name is "The Dude"
 
   before do
+    user = Factory(:confirmed_user)
+    profile = Factory(:profile, user_id: user.id) # name is "The Dude"
+
     visit "/"
-    binding.pry
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Sign in"
     click_link "The Dude"
   end
 
   scenario "Creating an apn" do
     click_link "Create Application"
-    # fill_in "Why", with: "because I really want to!"
+    fill_in "Why", with: "because I really want to!"
     click_button "Create Apn"
     page.should have_content("Application submitted.")
     page.should have_content("because I really want to!")
