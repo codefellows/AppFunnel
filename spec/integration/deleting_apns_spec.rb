@@ -6,10 +6,7 @@ feature "Deleting apns" do
   let!(:apn) { Factory(:apn, profile_id: profile.id) }
 
   scenario "Deleting an apn" do
-    visit "/"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Sign in"
+    sign_in_as!(user)
     click_link "The Dude"
     click_link "View Application"
     click_link "Delete Your Application"
