@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 feature "Editing apns" do
-  let!(:profile) { Factory(:profile) }
-  let!(:apn) { Factory(:apn) }
+  let!(:user) { Factory(:confirmed_user) }
+  let!(:profile) { Factory(:profile, user_id: user.id) }
+  let!(:apn) { Factory(:apn, profile_id: profile.id) }
 
   scenario "edit an apn" do
-    visit apn_path(apn)
+    sign_in_as!(user)
+    click_link "The Dude"
+    click_link "View Application"
     click_link "Edit Your Application"
     fill_in "Skype", with: "voice"
     click_button "Update Apn"

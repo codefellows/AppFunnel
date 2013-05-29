@@ -5,11 +5,7 @@ feature "Creating Apns" do
   before do
     user = Factory(:confirmed_user)
     profile = Factory(:profile, user_id: user.id) # name is "The Dude"
-
-    visit "/"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Sign in"
+    sign_in_as!(user)
     click_link "The Dude"
   end
 
