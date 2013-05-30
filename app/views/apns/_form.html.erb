@@ -4,7 +4,7 @@
  %>
 <%= semantic_form_for [@profile, @apn] do |f| %>
 
-    <%= f.inputs :first_name, :last_name, :phone_number, :city, :state, :for => :profile%>
+    <%= f.inputs :first_name, :last_name, :phone_number, :city, :state, :gender, :for => :profile%>
     <%= f.input :why, input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= f.input :diligent, input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= f.input :cssfloat, input_html: { rows: r, class: "input-xxlarge"  } %>
