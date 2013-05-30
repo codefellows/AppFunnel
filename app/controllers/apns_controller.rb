@@ -1,6 +1,8 @@
 class ApnsController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :find_profile
   before_filter :find_apn, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
 
   def new
     @apn = @profile.build_apn
@@ -39,18 +41,22 @@ class ApnsController < ApplicationController
   def destroy
     @apn.destroy
     flash[:notice] = "Your application has been deleted."
-    redirect_to profiles_path
+    redirect_to root_path
   end
 
   private
-    # def apn_params
-    #   params.require(:apn).permit(
-    #     :best, :cssfloat, :diligent,
-    #     :employment, :findout, :gplus, :skype, :why)
-    # end
-    def apn_params
 
-      # params.require(:apn).permit!
+    def current_permission
+      @current_permission ||= Permission.new(current_user)
+    end
+
+    def authorize
+      if !current_permission.allow?(params[:controller], params[:action])
+        redirect_to root_url, alert: "not authorized"
+      end
+    end
+
+    def apn_params
       params.require(:apn).permit(
         :why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype)
     end
