@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
-  before_filter :check_permission, only: [:show]
+  before_filter :reroute_new_users, except: [:create]
+  before_filter :authorize
 
   def index
     @profiles = Profile.all
@@ -45,13 +46,25 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     flash[:notice] = "Your profile has been deleted!"
-    redirect_to profiles_path
+    redirect_to root_path
   end
 
   private
-    def check_permission
-      if current_user.id != @profile.user_id
-        redirect_to root_path
+
+    def current_permission
+      @current_permission ||= Permission.new(current_user)
+    end
+
+    def authorize
+      if !current_permission.allow?(params[:controller], params[:action])
+        redirect_to root_url, alert: "not authorized"
+      end
+    end
+
+    def reroute_new_users
+      unless @profile
+        @profile = Profile.new
+        render action: "new"
       end
     end
 
@@ -62,7 +75,7 @@ class ProfilesController < ApplicationController
     end
 
     def find_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by_user_id(current_user)
     end
 end
 

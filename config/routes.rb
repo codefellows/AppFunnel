@@ -3,7 +3,7 @@ AppFunnel::Application.routes.draw do
     :passwords => "users/passwords" }
   get '/awaiting_confirmation', :to => "users#confirmation", :as => 'confirm_user'
 
-  root :to => "profiles#index"
+  root :to => "profiles#show"
 
   resources :profiles do
     resources :apns
