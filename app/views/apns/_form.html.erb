@@ -1,7 +1,10 @@
-<%= form_for [@profile, @apn] do |f| %>
+<% 
+  r = 6
+  c = 60
+ %>
+<%= semantic_form_for [@profile, @apn] do |f| %>
   <p>
-    <%= f.label :why %>
-    <%= f.text_area :why %>
+    <%= f.input :why, :input_html => { :rows => r, :cols => c  } %>
   </p>
   <p>
     <%= f.label :diligent %>

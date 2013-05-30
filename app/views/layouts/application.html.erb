@@ -7,14 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <% flash.each do |key, value| %>
-    <%= value %>
-  <% end %>
-
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="#">AppFunnel</a>
+      <a class="brand" href=<%= root_path %>>AppFunnel</a>
       <ul class="nav pull-right">
           <% if user_signed_in? %>
           <li><%= link_to current_user.email, edit_profile_path(:id) %>
@@ -27,7 +22,15 @@
     </div>
   </div>
 
-<%= yield %>
+  <% flash.each do |key, value| %>
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= key.capitalize %>:</strong> <%= value %>
+  </div>
+  <% end %>
 
+  <div class="container-fluid">
+  <%= yield %>
+  </div>
 </body>
 </html>

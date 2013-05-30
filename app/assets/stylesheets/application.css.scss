@@ -11,4 +11,12 @@
  *= require_self
  *= require_tree .
  */
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic);
+$sansFontFamily: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$baseFontFamily: $sansFontFamily;
+$baseFontSize: 16px;
+textarea { width:300px }
+// $navbarBackground: #2b6c90;
+// $navbarBackgroundHighlight: #429fc6;
+
 @import "bootstrap";
