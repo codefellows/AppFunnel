@@ -1,17 +1,9 @@
-<h2>Create an account</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <%= f.label :email %><%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="row">
+  <div class="span6">
+    <%= render :partial => "devise/shared/register_form" %>
+  </div>
+  <div class="span6">
+    <%= render :partial => "devise/shared/login_form" %>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+</div>

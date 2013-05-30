@@ -7,30 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href=<%= root_path %>>AppFunnel</a>
-      <ul class="nav pull-right">
-          <% if user_signed_in? %>
-          <li><%= link_to current_user.email, edit_profile_path(:id) %>
-          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <%= render "layouts/navigation" %>
 
-  <% flash.each do |key, value| %>
-  <div class="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong><%= key.capitalize %>:</strong> <%= value %>
-  </div>
-  <% end %>
-
-  <div class="container">
-  <%= yield %>
-  </div>
+  <div id="main" role="main">
+        <div class="container">
+          <div class="content">
+             <div class="row">
+              <div class="span12">
+                <%= render "layouts/messages" %>
+                <%= yield %>
+              </div>
+            </div>
+            <footer>
+            </footer>
+          </div>
+        </div> <!--! end of .container -->
+      </div> <!--! end of #main -->
+    </body>
 </body>
 </html>
