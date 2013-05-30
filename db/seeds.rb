@@ -27,3 +27,5 @@ profile_2 = Profile.create(first_name: "example", last_name: "last", email: user
 Apn.create(profile_id: profile_2.id, why: "really really", diligent: "yus",
            cssfloat: "yes!", skype: "garblegarble", gplus: "geepluhs")
 
+User.create(email: "admin@admin.com", password: "password", admin: true)
+

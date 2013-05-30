@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @review.user_id %>
+</p>
+
+<p>
+  <b>Apn:</b>
+  <%= @review.apn_id %>
+</p>
+
+<p>
+  <b>Education:</b>
+  <%= @review.education %>
+</p>
+
+<p>
+  <b>Contribution:</b>
+  <%= @review.contribution %>
+</p>
+
+<p>
+  <b>Resume:</b>
+  <%= @review.resume %>
+</p>
+
+<p>
+  <b>Fit:</b>
+  <%= @review.fit %>
+</p>
+
+<p>
+  <b>Work experience:</b>
+  <%= @review.work_experience %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @review.note %>
+</p>
+
+<p>
+  <b>Exceptional:</b>
+  <%= @review.exceptional %>
+</p>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

@@ -1,4 +1,3 @@
 class Review < ActiveRecord::Base
-  has_one :apn
-  attr_accessible :education, :essay, :fuzzy, :online
+  attr_accessible :apn_id, :contribution, :education, :exceptional, :fit, :note, :resume, :user_id, :work_experience
 end
