@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529210219) do
+ActiveRecord::Schema.define(:version => 20130530214007) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -46,13 +46,17 @@ ActiveRecord::Schema.define(:version => 20130529210219) do
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "reviews", :force => true do |t|
-    t.integer  "essay"
-    t.integer  "education"
-    t.integer  "online"
-    t.integer  "fuzzy"
+    t.integer  "user_id"
     t.integer  "apn_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "education"
+    t.integer  "contribution"
+    t.integer  "resume"
+    t.integer  "fit"
+    t.integer  "work_experience"
+    t.text     "note"
+    t.integer  "exceptional"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -66,12 +70,12 @@ ActiveRecord::Schema.define(:version => 20130529210219) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
   end
 
