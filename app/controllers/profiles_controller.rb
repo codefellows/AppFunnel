@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
-  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
+  before_filter :check_permission, only: [:show]
 
   def index
     @profiles = Profile.all
@@ -48,6 +49,12 @@ class ProfilesController < ApplicationController
   end
 
   private
+    def check_permission
+      if current_user.id != @profile.user_id
+        redirect_to root_path
+      end
+    end
+
     def profile_params
       params.require(:profile).permit(
         :first_name, :last_name, :email,
@@ -58,3 +65,4 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 end
+
