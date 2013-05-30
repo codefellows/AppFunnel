@@ -1,11 +1,8 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
-=======
   before_filter :reroute_new_users, except: [:create]
   before_filter :authorize
->>>>>>> auth
 
   def index
     @profiles = Profile.all
