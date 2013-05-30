@@ -70,10 +70,10 @@ class ApnsController < ApplicationController
 
     def find_apn
       @apn = Apn.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The application you were " +
                       "looking for could not be found."
-      redirect_to '/'
+      redirect_to root_path
     end
 
 end

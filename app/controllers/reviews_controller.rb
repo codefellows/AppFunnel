@@ -1,35 +1,19 @@
 class ReviewsController < ApplicationController
-  # GET /reviews
-  # GET /reviews.json
+  before_filter :authorize_admin
+
   def index
     @reviews = Review.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reviews }
-    end
+    @review_count = Review.count
+    @unreviewed_count = Apn.count - @review_count
   end
 
-  # GET /reviews/1
-  # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @review }
-    end
   end
 
-  # GET /reviews/new
-  # GET /reviews/new.json
   def new
     @review = Review.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @review }
-    end
+    @apn = Apn.where("not reviewed").order("created_at").first
   end
 
   # GET /reviews/1/edit
@@ -75,17 +59,16 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-    respond_to do |format|
-      format.html { redirect_to reviews_url }
-      format.json { head :no_content }
-    end
   end
 
   private
 
-    # Use this method to whitelist the permissible parameters. Example:
-    # params.require(:person).permit(:name, :age)
-    # Also, you can specialize this method with per-user checking of permissible attributes.
+    def authorize_admin
+      unless current_user.admin
+        redirect_to root_path
+      end
+    end
+
     def review_params
       params.require(:review).permit(:apn_id, :contribution, :education, :exceptional, :fit, :note, :resume, :user_id, :work_experience)
     end

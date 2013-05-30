@@ -3,7 +3,8 @@ class Permission < Struct.new(:user)
   @@user_controls = %w(profiles apns)
 
   def allow?(controller, action)
-    # return true if user.admin?
+    return true if user.admin?
+
     controller.in?(@@user_controls) &&
     action.in?(@@user_actions) &&
     if @apn
@@ -13,5 +14,6 @@ class Permission < Struct.new(:user)
     else
       true
     end
+
   end
 end
