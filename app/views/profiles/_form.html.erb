@@ -1,31 +1,30 @@
-<%= form_for(@profile) do |f| %>
-  <p>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
-  </p>
-  <%= f.submit class: "btn btn-primary" %>
-<%- end %>
+<p>Before you begin:</p>
+<ul>
+  <li><a href="www.codefellows.org/faq">Read our FAQ</a>. All of it</li>
+  <li>Applications are due a month before the bootcamp start date</li>
+  <li>We'll schedule interviews (in-person or Skype) with the finalists</li>
+  <li>Be thorough with your answers</li>
+</ul>
+
+<% 
+  r = 6
+  c = 60
+ %>
+<%= semantic_form_for @profile do |f| %>
+  <%= f.inputs :email, :first_name, :last_name, :phone_number, :city, :state%>
+  <%= f.input :gender, as: :radio, collection: ["Male", "Female"]  %>
+  <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
+    <%= apn_f.input :why, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :diligent, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :cssfloat, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :best, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :employment, input_html: { rows: r } %>
+    <%= apn_f.input :findout, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :gplus, input_html: { rows: r } %>
+    <%= apn_f.input :skype, input_html: { rows: r } %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, label: "Update Application", button_html: { class: "btn btn-primary btn-large" }%>
+  <% end %>
+<% end %>

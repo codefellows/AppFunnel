@@ -1,8 +1,6 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
-  before_filter :reroute_new_users, except: [:create]
-  before_filter :authorize
+  before_filter :authenticate_user!
 
   def index
     @profiles = Profile.all
@@ -15,7 +13,6 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.create(profile_params)
     @profile.user = current_user
-
     if @profile.save
       flash[:notice] = "Your profile has been created."
       redirect_to @profile
@@ -47,35 +44,17 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     flash[:notice] = "Your profile has been deleted!"
-    redirect_to root_path
+    redirect_to profiles_path
   end
 
   private
-
-    def current_permission
-      @current_permission ||= Permission.new(current_user)
-    end
-
-    def authorize
-      if !current_permission.allow?(params[:controller], params[:action])
-        redirect_to root_url, alert: "not authorized"
-      end
-    end
-
-    def reroute_new_users
-      unless @profile
-        @profile = Profile.new
-        render action: "new"
-      end
-    end
-
     def profile_params
       params.require(:profile).permit(
-        :first_name, :last_name, :email, :phone_number, :city, :state, :gender)
+        :first_name, :last_name, :email,
+        :phone_number, :city, :state, :gender )
     end
 
     def find_profile
-      @profile = Profile.find_by_user_id(current_user)
+      @profile = Profile.find(params[:id])
     end
 end
-
