@@ -14,8 +14,8 @@ en:
   devise:
     failure:
       already_authenticated: 'You are already signed in.'
-      unauthenticated: 'Please check your email and open the link to activate your account.'
-      unconfirmed: 'You have to confirm your account before continuing.'
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'Please check your email and open the link to activate your account.'
       locked: 'Your account is locked.'
       invalid: 'Invalid email or password.'
       invalid_token: 'Invalid authentication token.'

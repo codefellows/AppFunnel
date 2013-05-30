@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
 
   def index
     @profiles = Profile.all
