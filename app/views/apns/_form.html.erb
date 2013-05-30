@@ -3,37 +3,16 @@
   c = 60
  %>
 <%= semantic_form_for [@profile, @apn] do |f| %>
-  <p>
-    <%= f.input :why, :input_html => { :rows => r, :cols => c  } %>
-  </p>
-  <p>
-    <%= f.label :diligent %>
-    <%= f.text_area :diligent %>
-  </p>
-  <p>
-    <%= f.label :cssfloat %>
-    <%= f.text_area :cssfloat %>
-  </p>
-  <p>
-    <%= f.label :best %>
-    <%= f.text_area :best %>
-  </p>
-  <p>
-    <%= f.label :employment %>
-    <%= f.text_field :employment %>
-  </p>
-  <p>
-    <%= f.label :findout %>
-    <%= f.text_field :findout %>
-  </p>
-  <p>
-    <%= f.label :gplus %>
-    <%= f.text_field :gplus %>
-  </p>
-  <p>
-    <%= f.label :skype %>
-    <%= f.text_field :skype %>
-  </p>
 
-  <%= f.submit %>
+    <%= f.inputs :first_name, :last_name, :phone_number, :city, :state, :for => :profile%>
+    <%= f.input :why, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= f.input :diligent, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= f.input :cssfloat, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= f.input :best, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= f.input :employment, input_html: { rows: r } %>
+    <%= f.input :findout, input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= f.input :gplus, input_html: { rows: r } %>
+    <%= f.input :skype, input_html: { rows: r } %>
+
+  <%= f.submit "Update Application", class: "btn btn-primary" %>
 <% end %>

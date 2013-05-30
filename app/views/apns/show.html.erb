@@ -1,10 +1,12 @@
 <a href='/'>Index</a>
 <h2>Your Application:</h2>
-<% @apn_display_attributes.each do |key, value| %>
-  <%= key + ": " + value.to_s %>
-  <br>
-<% end %>
 
+<dl class="dl-horizontal">
+<% @apn_display_attributes.each do |key, value| %>
+  <dt><%= key.capitalize %></dt>
+  <dd><%= value.to_s %></dd>
+<% end %>
+</dl>
 <p><%= link_to "Edit Your Application", [:edit, @profile, @apn] %></p>
 <%= link_to "Delete Your Application", [@profile, @apn], method: :delete,
   confirm: "Are you sure you want to delete your application?" %>

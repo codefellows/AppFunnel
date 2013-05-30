@@ -1,9 +1,12 @@
-<a href='/'>Index</a>
-<h2>Here You Are</h2>
+<h2>Your Profile</h2>
+
+<dl class="dl-horizontal">
 <% @display_attributes.each do |key, value| %>
-  <%= key + ": " + value.to_s %>
-  <br>
+  <dt><%= key.capitalize %></dt>
+  <dd><%= value.to_s %></dd>
 <% end %>
+</dl>
+
 <p>
   <% if @profile.apn %>
     <%= link_to "View Application", [@profile, @profile.apn] %>
