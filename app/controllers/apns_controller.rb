@@ -58,7 +58,7 @@ class ApnsController < ApplicationController
 
     def apn_params
       params.require(:apn).permit(
-        :why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype)
+        :why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype, :reviewed)
     end
 
     def find_profile

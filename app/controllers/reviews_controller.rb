@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authorize_admin
+  before_filter :find_apn, only: [:create, :edit, :update, :destroy]
 
   def index
     @reviews = Review.all
@@ -13,7 +14,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @apn = Apn.where("not reviewed").order("created_at").first
+    @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
   end
 
   # GET /reviews/1/edit
@@ -26,14 +27,10 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save && @apn.update_attributes(reviewed: true)
+      redirect_to new_review_path, notice: @apn.profile.first_name + " successfully reviewed"
+    else
+      render action: "new", alert: "something went wrong with submitting the review"
     end
   end
 
@@ -63,6 +60,10 @@ class ReviewsController < ApplicationController
 
   private
 
+    def find_apn
+      @apn = Apn.find(review_params[:apn_id])
+    end
+
     def authorize_admin
       unless current_user.admin
         redirect_to root_path
@@ -70,6 +71,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:apn_id, :contribution, :education, :exceptional, :fit, :note, :resume, :user_id, :work_experience)
+      params.require(:review).permit(:apn_id, :contribution, :education,
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience)
     end
 end
