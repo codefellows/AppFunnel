@@ -19,7 +19,7 @@
 <% @reviews.each do |review| %>
   <tr>
     <td><%= review.apn.profile.first_name %> <%= review.apn.profile.last_name %></td>
-    <td><%= link_to "View" %></td>
+    <td><%= link_to "View", profile_apn_path(review.apn.profile, review.apn) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>
     <td><%= review.resume %></td>
