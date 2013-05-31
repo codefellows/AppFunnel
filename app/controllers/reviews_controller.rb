@@ -8,6 +8,9 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
+    @averages = ["education", "contribution", "resume", "fit", "work_experience"].map do |attr|
+      Review.average(attr)
+    end
   end
 
   def show

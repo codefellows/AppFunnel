@@ -17,6 +17,13 @@
     <th></th>
   </tr>
 
+  <tr>
+    <td></td>
+    <% @averages.each do |avg| %>
+      <td><%= avg.to_f %></td>
+    <% end %>
+  </tr>
+
 <% @reviews.each do |review| %>
   <tr>
     <td><%= review.apn.profile.first_name %> <%= review.apn.profile.last_name %></td>
