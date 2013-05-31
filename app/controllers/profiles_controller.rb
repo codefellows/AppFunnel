@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show
+  def show   
     @display_attributes = @profile.attributes
     @display_apn_attributes = @profile.apn.attributes
     
@@ -79,7 +79,12 @@ class ProfilesController < ApplicationController
     end
 
     def find_profile
+      if current_user.admin
+          redirect_to reviews_path
+      end
+
       @profile = Profile.find_by_user_id(current_user)
     end
+
 end
 
