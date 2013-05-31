@@ -1,15 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @review.user_id %>
+  <b>Applicant:</b>
+  <%= @review.apn.profile.first_name %> <%= @review.apn.profile.last_name %>
 </p>
 
 <p>
-  <b>Apn:</b>
-  <%= @review.apn_id %>
+  <h3>Application:</h3>
+  <% @apn_display_attributes.each do |key, value| %>
+  <dt><%= key.capitalize %></dt>
+  <dd><%= value.to_s %></dd>
+<% end %>
 </p>
 
+<h3>Ratings</h3>
 <p>
   <b>Education:</b>
   <%= @review.education %>

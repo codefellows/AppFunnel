@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Apn</th>
+    <th>Applicant</th>
+    <th>Application</th>
     <th>Education</th>
     <th>Contribution</th>
     <th>Resume</th>
@@ -18,8 +18,8 @@
 
 <% @reviews.each do |review| %>
   <tr>
-    <td><%= review.user_id %></td>
-    <td><%= review.apn_id %></td>
+    <td><%= review.apn.profile.first_name %> <%= review.apn.profile.last_name %></td>
+    <td><%= link_to "View" %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>
     <td><%= review.resume %></td>

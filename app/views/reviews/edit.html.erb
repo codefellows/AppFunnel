@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
+<% @apn_display_attributes.each do |key, value| %>
+  <dt><%= key.capitalize %></dt>
+  <dd><%= value.to_s %></dd>
+<% end %>
+
 <%= link_to 'Show', @review %> |
 <%= link_to 'Back', reviews_path %>

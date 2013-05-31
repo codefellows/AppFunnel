@@ -9,16 +9,31 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+
+    @apn_display_attributes = @review.apn.attributes
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+
   end
 
   def new
     @review = Review.new
     @apn = Apn.where("not reviewed").order("created_at").first
+
+    @apn_display_attributes = @review.apn.attributes
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+
   end
 
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+
+    @apn_display_attributes = @review.apn.attributes
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+
   end
 
   # POST /reviews
