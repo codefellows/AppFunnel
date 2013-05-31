@@ -39,13 +39,12 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    binding.pry
     if @review.save && @apn.update_attributes(reviewed: true)
       link = reviews_path
       name = @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize
-      redirect_to new_review_path, notice: "#{name} successfully reviewed." +
+      redirect_to new_review_path, notice: ("#{name} successfully reviewed." +
         " New application loaded. If you're feeling lazy, <a href='#{link}'>" +
-        "go to the Dashboard</a>".html_safe
+        "go to the Dashboard</a>").html_safe
     else
       render action: "new", alert: "something went wrong with submitting the review"
     end
@@ -64,7 +63,9 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review.destroy, flash[:notice] = "Review was destroyed"
+    @review.destroy
+    flash[:notice] = "Review was destroyed"
+    redirect_to root_path
   end
 
   private
@@ -81,7 +82,7 @@ class ReviewsController < ApplicationController
     end
 
     def find_apn
-      @apn = Apn.find(params[:apn_id])
+      @apn = Apn.find(review_params[:apn_id])
     end
 
     def authorize_admin

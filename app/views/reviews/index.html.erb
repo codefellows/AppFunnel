@@ -20,7 +20,7 @@
   <tr>
     <td></td>
     <% @averages.each do |avg| %>
-      <td><%= avg.to_f %></td>
+      <td><%= "%.2f" % avg.to_f %></td>
     <% end %>
   </tr>
 
