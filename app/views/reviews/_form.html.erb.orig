@@ -1,5 +1,12 @@
 <%= semantic_form_for @review do |f| %>
   <%= f.inputs do %>
+<<<<<<< HEAD
+    <%= f.input :education %>
+    <%= f.input :contribution %>
+    <%= f.input :resume %>
+    <%= f.input :fit %>
+    <%= f.input :work_experience %>
+=======
   <div style="display:none">
     <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
     <%= f.input :apn_id, as: :hidden, input_html: { value: @apn.id } %>
@@ -9,6 +16,7 @@
     <%= f.input :resume, input_html: {max: 4, min: 1} %>
     <%= f.input :fit,input_html: {max: 4, min: 1} %> 
     <%= f.input :work_experience,input_html: {max: 4, min: 1} %>
+>>>>>>> reviews_views
     <%= f.input :note %>
     <%= f.input :exceptional, value: 0, 
       input_html: {min: -1, max: 1 },
