@@ -14,7 +14,7 @@ profile = Profile.create(first_name: "spanky", last_name: "cavendish", email: us
 
 Apn.create(profile_id: profile.id, why: "because I want to", diligent: "archery buff",
            cssfloat: "like root beer float", findout: "reggie told me", best: "q-tips",
-           employment: "what?", skype: "spankyonskype", gplus: "spanksterC", findout: "asdasda")
+           employment: "what?", skype: "spankyonskype", gplus: "spanksterC", findout: "asdasda", experience: "a lot of it")
 
 
 user_2 = User.create(email: "example@email.com", password: "password")
@@ -25,5 +25,5 @@ profile_2 = Profile.create(first_name: "example", last_name: "last", email: user
                            gender: "F", user_id: user_2.id)
 
 Apn.create(profile_id: profile_2.id, why: "really really", diligent: "yus",
-           cssfloat: "yes!", skype: "garblegarble", gplus: "geepluhs")
+           cssfloat: "yes!", skype: "garblegarble", gplus: "geepluhs", experience: "Insane amunnntss")
 

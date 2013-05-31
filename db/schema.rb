@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527205151) do
+ActiveRecord::Schema.define(:version => 20130531012101) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130527205151) do
     t.integer  "profile_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.text     "experience"
   end
 
   add_index "apns", ["profile_id"], :name => "index_apns_on_profile_id"

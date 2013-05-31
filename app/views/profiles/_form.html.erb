@@ -13,16 +13,26 @@
 
 <%= semantic_form_for @profile do |f| %>
   <%= f.inputs :email, :first_name, :last_name, :phone_number, :city, :state%>
-  <%= f.input :gender, as: :radio, collection: ["Male", "Female"]  %>
+  <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
+  <div class="well">
+    <p>Code Fellows is committed to the principle that all persons shall have equal access to programs, facilities, services, and employment without regard to personal characteristics not related to ability, performance, or qualifications as determined by Code Fellows policy and/or applicable laws.</p> 
+  
+    <p>Code Fellows prohibits discrimination, harassment and bullying against any person because of age, ancestry, color, disability or handicap, national origin, race, religion, gender, sexual or affectional orientation, gender identity, appearance, matriculation, political affiliation, marital status, veteran status or any other characteristic protected by law.  Code Fellows expects that its employees, volunteers, members, and other constituents of Code Fellows, when and where ever those individuals are conducting Code Fellows business or participating in Code Fellows events or activities, shall maintain an environment free of discrimination, including harassment, bullying, or retaliation.</p>
+  </div>
+
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
-    <%= apn_f.input :why, input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :diligent, input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :cssfloat, input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :best, input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :employment, input_html: { rows: r } %>
-    <%= apn_f.input :findout, input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :gplus, input_html: { rows: r } %>
-    <%= apn_f.input :skype, input_html: { rows: r } %>
+    <%= apn_f.input :employment, label: "What is your employment status?", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
+
+    <%= apn_f.input :gplus, label: "Google Plus Profile URL", input_html: { rows: r } %>
+    <%= apn_f.input :skype, label: "Skype ID", input_html: { rows: r } %>
+
+    <%= apn_f.input :why, label: "Why do you want to join Code Fellows?", input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :diligent, label: "Tell us about a time when you learned a difficult skill", input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :experience, label: "What is your experience programming? We don't require experience with Rails, but the best candidates will have some experience writing code.", input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :best, label: "What's the best thing, like, ever? Surprise us.", input_html: { rows: r, class: "input-xxlarge"  } %>
+
+    <%= apn_f.input :cssfloat, label: 'Technical question: What is CSS "float" property do?' , input_html: { rows: r, class: "input-xxlarge"  } %>
+    <%= apn_f.input :findout, label: "Where did you find out about us?",input_html: { rows: r, class: "input-xxlarge"  } %>
   <% end %>
 
   <%= f.actions do %>
