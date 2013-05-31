@@ -17,10 +17,11 @@ class ProfilesController < ApplicationController
     @profile.user = current_user
 
     if @profile.save
-      flash[:notice] = "Your profile has been created."
+      flash[:notice] = "Your application has been created."
       redirect_to @profile
     else
-      flash[:alert] = "Your profile hasn't been created."
+      flash[:alert] = "Your application hasn't been created."
+      flash[:alert] = "Your application hasn't been created."
       render action: "new"
     end
   end
@@ -39,17 +40,17 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update_attributes(profile_params)
-      flash[:notice] = "Your profile has been updated."
+      flash[:notice] = "Your application has been updated."
       redirect_to @profile
     else
-      flash[:alert] = "Your profile hasn't been updated."
+      flash[:alert] = "Your application hasn't been updated."
       render action: "edit"
     end
   end
 
   def destroy
     @profile.destroy
-    flash[:notice] = "Your profile has been deleted!"
+    flash[:notice] = "Your application has been deleted!"
     redirect_to root_path
   end
 
