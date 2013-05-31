@@ -1,16 +1,8 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href=<%= root_path %>>AppFunnel</a>
+    <a class="brand" href="<%= root_path %>"><img src="<%= image_path("logo.png") %>"></a>
     <ul class="nav pull-right">
-        <% if user_signed_in? %>
-          <li>
-          <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
-          </li>
-        <% else %>
-          <li>
-          <%= link_to('Login', new_user_session_path)  %>
-          </li>
-        <% end %>
+          <li><a href="http://www.codefellows.org">Back to Code Fellows</a></li>
         <% if user_signed_in? %>
           <li>
           <%= link_to('Edit account', edit_user_registration_path) %>
@@ -20,6 +12,16 @@
           <%= link_to('Sign up', new_user_registration_path)  %>
           </li>
         <% end %>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
+          </li>
+        <% else %>
+          <li>
+          <%= link_to('Login', new_user_session_path)  %>
+          </li>
+        <% end %>
+        
     </ul>
   </div>
 </div>

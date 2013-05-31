@@ -11,13 +11,23 @@
  *= require_self
  *= require_tree .
  */
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic);
+// @import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic);
 
-$sansFontFamily: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Fjalla+One);
+
+$sansFontFamily: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $baseFontFamily: $sansFontFamily;
 $baseFontSize: 16px;
-textarea { width:300px }
+$btnPrimaryBackground: #049cdb;
+.nav { height: 55px; font-size: 20px; }
+.nav li { line-height: 31px; } // height of image below
+textarea { width:300px; }
+
 // $navbarBackground: #2b6c90;
 // $navbarBackgroundHighlight: #429fc6;
 
 @import "bootstrap";
+.navbar-inner { background-image: url(/assets/nav_bg.png); }
+.navbar .brand { padding: 8px 0 0 20px; }
+footer { padding: 20px; background: #CF2730; color: $white; }
+footer a { color: $white; text-decoration: underline; }
