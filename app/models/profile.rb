@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  has_one :apn, :dependent => :delete
+  has_one :apn, autosave: true, :dependent => :delete
   accepts_nested_attributes_for :apn
 
   validates :email, presence: true, uniqueness: true

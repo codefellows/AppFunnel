@@ -10,11 +10,11 @@ user.confirm!
 
 profile = Profile.create(first_name: "spanky", last_name: "cavendish", email: user.email,
                phone_number: "2065555555", city: "seattle", state: "WA",
-               gender: "M", user_id: user_1.id)
+               gender: "M", user_id: user.id)
 
 Apn.create(profile_id: profile.id, why: "because I want to", diligent: "archery buff",
            cssfloat: "like root beer float", findout: "reggie told me", best: "q-tips",
-           employment: "what?", skype: "spankyonskype", gplus: "spanksterC")
+           employment: "what?", skype: "spankyonskype", gplus: "spanksterC", findout: "asdasda")
 
 
 user_2 = User.create(email: "example@email.com", password: "password")

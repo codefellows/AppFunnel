@@ -10,6 +10,7 @@
   r = 6
   c = 60
  %>
+
 <%= semantic_form_for @profile do |f| %>
   <%= f.inputs :email, :first_name, :last_name, :phone_number, :city, :state%>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"]  %>

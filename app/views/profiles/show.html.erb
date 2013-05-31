@@ -5,16 +5,22 @@
   <dt><%= key.capitalize %></dt>
   <dd><%= value.to_s %></dd>
 <% end %>
+<% @display_apn_attributes.each do |key, value| %>
+  <dt><%= key.capitalize %></dt>
+  <dd><%= value.to_s %></dd>
+<% end %>
 </dl>
 
-<p>
-  <% if @profile.apn %>
-    <%= link_to "View Application", [@profile, @profile.apn] %>
-  <% else %>
-  <%= link_to "Create Application", new_profile_apn_path(@profile) %>
-  <% end %>
-</p>
 
-<%= link_to "Edit Profile", edit_profile_path(@profile) %>
+<%= link_to "Edit Profile", edit_profile_path(@profile) %><br>
 <%= link_to "Delete Profile", profile_path(@profile), method: :delete,
   confirm: "Are you sure you want to delete your profile?" %>
+
+
+  <p>
+    <% if @profile.apn %>
+      <%= link_to "View Application", [@profile, @profile.apn] %>
+    <% else %>
+    <%= link_to "Create Application", new_profile_apn_path(@profile) %>
+    <% end %>
+  </p>
