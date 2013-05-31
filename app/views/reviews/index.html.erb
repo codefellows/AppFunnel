@@ -3,6 +3,9 @@
 <%= link_to 'Review a New Application', new_review_path, class: "btn btn-primary btn-large" %>
 <br>
 <br>
+<p><%= @review_count %> reviewed applications</p>
+<p><%= @unreviewed_count %> applications awaiting review</p>
+<br>
 <table class="table table-striped table-hover">
   <tr>
     <th>Applicant</th>
