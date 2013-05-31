@@ -42,7 +42,8 @@ class ReviewsController < ApplicationController
 
     if @review.save && @apn.update_attributes(reviewed: true)
       link = reviews_path
-      redirect_to new_review_path, notice: @apn.profile.first_name + " successfully reviewed. New application loaded. If you're feeling lazy <a href='#{link}'>go to the Dashboard</a>".html_safe
+      name = @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize
+      redirect_to new_review_path, notice: "#{name} successfully reviewed. New application loaded. If you're feeling lazy, <a href='#{link}'>go to the Dashboard</a>".html_safe
     else
       render action: "new", alert: "something went wrong with submitting the review"
     end
