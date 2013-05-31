@@ -1,15 +1,16 @@
-<h1>Listing reviews</h1>
-
+<h1>Application Review Dashboard</h1>
+<br>
+<%= link_to 'Review a New Application', new_review_path, class: "btn btn-primary btn-large" %>
+<br>
+<br>
 <table class="table table-striped table-hover">
   <tr>
     <th>Applicant</th>
-    <th>Application</th>
     <th>Education</th>
-    <th>Contribution</th>
+    <th>Open source</th>
     <th>Resume</th>
     <th>Fit</th>
     <th>Work experience</th>
-    <th>Note</th>
     <th>Exceptional</th>
     <th></th>
     <th></th>
@@ -19,13 +20,11 @@
 <% @reviews.each do |review| %>
   <tr>
     <td><%= review.apn.profile.first_name %> <%= review.apn.profile.last_name %></td>
-    <td><%= link_to "View", profile_apn_path(review.apn.profile, review.apn) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>
     <td><%= review.resume %></td>
     <td><%= review.fit %></td>
     <td><%= review.work_experience %></td>
-    <td><%= review.note %></td>
     <td><%= review.exceptional %></td>
     <td><%= link_to 'Show', review %></td>
     <td><%= link_to 'Edit', edit_review_path(review) %></td>
@@ -34,4 +33,3 @@
 <% end %>
 </table>
 
-<%= link_to 'Review a New Application', new_review_path, class: "btn btn-primary btn-large" %>

@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   before_filter :authorize_admin
-  before_filter :find_apn, only: [:create, :edit, :update, :destroy]
+  before_filter :find_review, only: [:show, :edit, :update, :destroy]
+  before_filter :find_apn, only: [:create, :update]
+  before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
 
   def index
     @reviews = Review.all
@@ -9,12 +11,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
-
     @apn_display_attributes = @review.apn.attributes
     excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
     @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
-
   end
 
   def new
@@ -27,8 +26,6 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    @review = Review.find(params[:id])
-
     @apn_display_attributes = @review.apn.attributes
     excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
     @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
@@ -39,11 +36,13 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
+    binding.pry
     if @review.save && @apn.update_attributes(reviewed: true)
       link = reviews_path
       name = @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize
-      redirect_to new_review_path, notice: "#{name} successfully reviewed. New application loaded. If you're feeling lazy, <a href='#{link}'>go to the Dashboard</a>".html_safe
+      redirect_to new_review_path, notice: "#{name} successfully reviewed." +
+        " New application loaded. If you're feeling lazy, <a href='#{link}'>" +
+        "go to the Dashboard</a>".html_safe
     else
       render action: "new", alert: "something went wrong with submitting the review"
     end
@@ -52,31 +51,34 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    @review = Review.find(params[:id])
-
-    respond_to do |format|
-      if @review.update_attributes(review_params)
-        format.html { redirect_to @review, notice: "Review was successfully updated." }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.update_attributes(review_params)
+      redirect_to @review, notice: "Review was successfully updated."
+    else
+      render action: "edit"
     end
   end
 
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-
+    @review.destroy, flash[:notice] = "Review was destroyed"
   end
 
   private
 
+    def find_review
+      @review = Review.find(params[:id])
+    end
+
+    # fixes edit and delete error where apn_id
+    # isn't passed in params
+    #
+    def find_apn_w_rev_id
+      @apn = Apn.find(@review.apn_id)
+    end
+
     def find_apn
-      @apn = Apn.find(review_params[:apn_id])
+      @apn = Apn.find(params[:apn_id])
     end
 
     def authorize_admin
@@ -86,7 +88,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:apn_id, :contribution, :education,
+      params.require(:review).permit(:id, :apn_id, :contribution, :education,
         :exceptional, :fit, :note, :resume, :user_id, :work_experience)
     end
 end
