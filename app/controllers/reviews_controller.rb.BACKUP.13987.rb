@@ -19,7 +19,16 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+<<<<<<< HEAD
+    @apn = Apn.where("not reviewed").order("created_at").first
+
+    @apn_display_attributes = @review.apn.attributes
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+
+=======
     @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
+>>>>>>> reviews_views
   end
 
   # GET /reviews/1/edit
