@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
     @review_count = Review.count
-    @unreviewed_count = Apn.count - @review_count
+    @unreviewed_count = Apn.where('"reviewed" = ?', false).count
   end
 
   def show
@@ -41,7 +41,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save && @apn.update_attributes(reviewed: true)
-      redirect_to new_review_path, notice: @apn.profile.first_name + " successfully reviewed"
+      link = reviews_path
+      redirect_to new_review_path, notice: @apn.profile.first_name + " successfully reviewed. New application loaded. If you're feeling lazy <a href='#{link}'>go to the Dashboard</a>".html_safe
     else
       render action: "new", alert: "something went wrong with submitting the review"
     end
@@ -54,7 +55,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @review, notice: "Review was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

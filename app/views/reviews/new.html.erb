@@ -1,11 +1,13 @@
-<h1>Reviewing <%= @apn.profile.first_name %>'s profile</h1>
+<div class="row">
+  <div class="span9">
+  <h2><small>Reviewing</small><br/><%= @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize %></h2>
 
-<%= render 'apn_form' %>
-<%= render 'form' %>
-
-<%= link_to 'Reviews Dashboard', reviews_path, class: "btn" %>
-
-
-<% (0..5).each do %>
-  <br>
-<% end %>
+  <%= render 'apn_form' %>
+  </div>
+  <div class="span3">
+  <%= render 'form' %>
+  </div>
+  <% (0..5).each do %>
+    <br>
+  <% end %>
+</row>
