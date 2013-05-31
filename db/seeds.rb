@@ -15,9 +15,17 @@
                  phone_number: "2065555555", city: "seattle", state: "WA",
                  gender: "M")
 
-  Apn.create(profile_id: profile.id, why: "because I want to", diligent: "archery buff",
-             cssfloat: "like root beer float", findout: "reggie told me", best: "q-tips",
-             employment: "what?", skype: "spankyonskype", gplus: "spanksterC")
+  Apn.create(profile_id: profile.id,
+             why: "Well, I've wanted to shave yaks for about as long as I can remember." +
+             " I mean, can you THINK of a more ridiculous looking animal once all its" +
+             " hair's gone? Not to mention how good a metaphor it makes -- both the" +
+             " shaved yak and the actual act of shaving it, that is. At any rate, if" +
+             " I'm accepted I'll definitely be in the top, like, baker's dozen or so" +
+             " yak-shavers you've ever laid eyes upon.",
+             diligent: "huuuuuuuuuuuuuuuuuuuuuuuuuuuuge archery buff",
+             cssfloat: "basically like root beer float, yeah?",
+             findout: "reggie told me", best: "q-tips",
+             employment: "what?", skype: "mrpercivaltoyou", gplus: "percival")
 end
 
 user_2 = User.create(email: "example@email.com", password: "password")
