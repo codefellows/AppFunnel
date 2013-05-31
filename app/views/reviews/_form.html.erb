@@ -10,7 +10,7 @@
     <%= f.input :resume, input_html: {max: 4, min: 1} %>
     <%= f.input :fit,input_html: {max: 4, min: 1} %> 
     <%= f.input :work_experience,input_html: {max: 4, min: 1} %>
-    <%= f.input :note %>
+    <% f.input :note %>
     <%= f.input :exceptional, value: 0, 
       input_html: {min: -1, max: 1 },
       label: "-1 to toss, 1 to fast track, 0 is normal" %>
