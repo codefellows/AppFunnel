@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531012101) do
+ActiveRecord::Schema.define(:version => 20130607020836) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(:version => 20130531012101) do
     t.text     "cssfloat"
     t.text     "findout"
     t.integer  "profile_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "reviewed",     :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "reviewed",       :default => false
     t.text     "experience"
+    t.string   "recommendation"
   end
 
   add_index "apns", ["profile_id"], :name => "index_apns_on_profile_id"
@@ -43,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20130531012101) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "user_id"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "github"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
