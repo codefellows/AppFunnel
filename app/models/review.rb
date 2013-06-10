@@ -19,4 +19,8 @@
 
 class Review < ActiveRecord::Base
   belongs_to :apn
+
+  validates :education, :contribution, :resume, :fit, :work_experience,
+    presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
+
 end
