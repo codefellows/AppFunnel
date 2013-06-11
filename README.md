@@ -4,6 +4,7 @@ An application created for [Code Fellows](http://www.codefellows.org) handling p
 The app allows students to apply through a web form and then Code Fellows staff can review and rate the applications and request interviews from applicants.
 
 ![Application Form](application_form.png)
+
 ![Application Review](application_review.png)
 
 ---
