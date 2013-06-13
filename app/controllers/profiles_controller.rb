@@ -25,10 +25,10 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show   
+  def show
     @display_attributes = @profile.attributes
     @display_apn_attributes = @profile.apn.attributes
-    
+
     excluded_attributes = ["user_id", "id", "created_at", "updated_at", "profile_id", "applicant_id", "reviewed"]
     @display_attributes.delete_if {|key| excluded_attributes.include? key }
     @display_apn_attributes.delete_if {|key| excluded_attributes.include? key }
@@ -74,8 +74,8 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(
-        :first_name, :last_name, :email, :phone_number, :city, :state, :gender, 
-        apn_attributes:[:why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype, :experience])
+        :first_name, :last_name, :email, :phone_number, :city, :state, :gender, :github, :twitter, :linkedin,
+        apn_attributes:[:why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype, :experience, :recommendation])
     end
 
     def find_profile

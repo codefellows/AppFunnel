@@ -22,12 +22,28 @@ $btnPrimaryBackground: #049cdb;
 .nav { height: 55px; font-size: 20px; }
 .nav li { line-height: 31px; } // height of image below
 textarea { width:300px; }
-
 // $navbarBackground: #2b6c90;
 // $navbarBackgroundHighlight: #429fc6;
 
 @import "bootstrap";
+$dtWidth: 200px;
+
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
 .navbar .brand { padding: 8px 0 0 20px; }
 footer { padding: 60px; background: #CF2730; color: $white; margin-top: 100px; text-align: center; }
 footer a { color: $white; text-decoration: underline; }
+.dl-horizontal dt 
+{ 
+  white-space: normal; 
+  width: $dtWidth;
+}
+
+.dl-horizontal dd {
+  margin-left: $dtWidth + 20;
+}
+
+.dl-horizontal > dd:after {
+  display: table;
+  content: "";
+  clear: both;
+}
