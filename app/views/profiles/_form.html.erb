@@ -24,7 +24,7 @@
   </div>
 
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
-    <%= apn_f.input :employment, label: "What is your employment status?", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
+    <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
     <%= apn_f.input :gplus, label: "Google Plus Profile URL", input_html: { rows: r } %>
     <%= apn_f.input :skype, label: "Skype ID", input_html: { rows: r } %>

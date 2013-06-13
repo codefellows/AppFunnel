@@ -32,6 +32,11 @@ $dtWidth: 200px;
 .navbar .brand { padding: 8px 0 0 20px; }
 footer { padding: 60px; background: #CF2730; color: $white; margin-top: 100px; text-align: center; }
 footer a { color: $white; text-decoration: underline; }
+
+dd {
+  padding-bottom: 1em;
+}
+
 .dl-horizontal dt 
 { 
   white-space: normal; 
@@ -39,6 +44,7 @@ footer a { color: $white; text-decoration: underline; }
 }
 
 .dl-horizontal dd {
+  padding-bottom: 0;
   margin-left: $dtWidth + 20;
 }
 
