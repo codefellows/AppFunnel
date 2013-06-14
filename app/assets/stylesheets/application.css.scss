@@ -35,7 +35,6 @@ $footerHeight: 200px;
 footer { 
   background: #CF2730; 
   color: $white; 
-  position: relative; 
   height: $footerHeight;
 
   a { 
@@ -46,7 +45,7 @@ footer {
 
 .footer {
   text-align: center;
-  padding-top: ($footerHeight/2) - 0.5
+  padding-top: ($footerHeight/2)
 }
 
 
@@ -54,14 +53,12 @@ footer {
   padding-bottom: 1em;
 }
 
-#reviewForm .affix {
-    position: fixed;
-    top: 0;
+#reviewForm.affix {
+    top: 10px;
 }
-#reviewForm .affix-top {
-    top: 0px;
-  }
 
-#reviewform .affix-bottom {
-  bottom: 10em;
+#reviewForm.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 210;
 }
