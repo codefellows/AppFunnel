@@ -27,12 +27,41 @@ textarea { width:300px; }
 
 @import "bootstrap";
 $dtWidth: 200px;
-
+$footerHeight: 200px;
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
 .navbar .brand { padding: 8px 0 0 20px; }
-footer { padding: 60px; background: #CF2730; color: $white; margin-top: 100px; text-align: center; }
-footer a { color: $white; text-decoration: underline; }
+
+
+footer { 
+  background: #CF2730; 
+  color: $white; 
+  position: relative; 
+  height: $footerHeight;
+
+  a { 
+    color: $white; 
+    text-decoration: underline;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding-top: ($footerHeight/2) - 0.5
+}
+
 
 .long dd {
   padding-bottom: 1em;
+}
+
+#reviewForm .affix {
+    position: fixed;
+    top: 0;
+}
+#reviewForm .affix-top {
+    top: 0px;
+  }
+
+#reviewform .affix-bottom {
+  bottom: 10em;
 }
