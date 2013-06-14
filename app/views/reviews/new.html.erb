@@ -1,13 +1,2 @@
-<div class="row">
-  <div class="span9">
-  <h2><small>Reviewing</small><br/><%= @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize %></h2>
-
-  <%= render 'apn_form' %>
-  </div>
-  <div class="span3">
-  <%= render 'form' %>
-  </div>
-  <% (0..5).each do %>
-    <br>
-  <% end %>
-</div>
+<h2><small>Reviewing</small><br/><%= @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize %></h2>
+<%= render "review_apn" %>

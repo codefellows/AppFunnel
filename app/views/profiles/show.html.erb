@@ -1,14 +1,48 @@
 <h2>Your Application</h2>
 
 <dl class="dl-horizontal">
-<% @display_attributes.each do |key, value| %>
-  <dt><%= key.capitalize.sub(/[_]/, " ") %></dt>
-  <dd><%= value.to_s %></dd>
-<% end %>
-<% @display_apn_attributes.each do |key, value| %>
-  <dt><%= key.capitalize.sub(/[_]/, " ") %></dt>
-  <dd><%= value.to_s %></dd>
-<% end %>
+  <dt>First Name</dt>
+  <dd><%= @profile.first_name %></dd>
+  <dt>Last Name</dt>
+  <dd><%= @profile.last_name %></dd>
+  <dt>Email</dt>
+  <dd><%= @profile.email %></dd>
+  <dt>Phone Number</dt>
+  <dd><%= @profile.phone_number %></dd>
+  <dt>City</dt>
+  <dd><%= @profile.city %></dd>
+  <dt>State</dt>
+  <dd><%= @profile.state %></dd>
+  <dt>Github Username</dt>
+  <dd><%= @profile.github %></dd>
+  <dt>Twitter Username</dt>
+  <dd><%= @profile.twitter %></dd>
+  <dt>Linkedin Username</dt>
+  <dd><%= @profile.linkedin %></dd>
+  <dt>Gender</dt>
+  <dd><%= @profile.gender %></dd>
+  <dt>Employment status</dt>
+  <dd><%= @profile.apn.employment %></dd>
+  <dt>Google Plus Profile URL</dt>
+  <dd><%= @profile.apn.gplus %></dd>
+  <dt>Skype ID</dt>
+  <dd><%= @profile.apn.skype %></dd>
+</dl>
+<dl class="long">
+  <dt>Why do you want to join Code Fellows?</dt>
+  <dd><%= @profile.apn.why %></dd>
+  <dt>Tell us about a time when you learned a difficult skill</dt>
+  <dd><%= @profile.apn.diligent %></dd>
+  <dt>What is your experience programming?</dt>
+  <dd><%= @profile.apn.experience %></dd>
+  <dt>What's the best thing, like, ever?</dt>
+  <dd><%= @profile.apn.best %></dd>
+  <dt>Technical question: What is CSS "float" property do?</dt>
+  <dd><%= @profile.apn.cssfloat %></dd>
+  <dt>Where did you find out about us?</dt>
+  <dd><%= @profile.apn.findout %></dd>
+  <dt>Recommendation contacts</dt>
+  <dd><%= @profile.apn.recommendation %></dd>
 </dl>
 
 <%= link_to "Edit Application", edit_profile_path(@profile), class: "btn btn-primary btn-large" %><br>

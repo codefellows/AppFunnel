@@ -22,12 +22,44 @@ $btnPrimaryBackground: #049cdb;
 .nav { height: 55px; font-size: 20px; }
 .nav li { line-height: 31px; } // height of image below
 textarea { width:300px; }
-
 // $navbarBackground: #2b6c90;
 // $navbarBackgroundHighlight: #429fc6;
 
 @import "bootstrap";
+$dtWidth: 200px;
+$footerHeight: 200px;
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
 .navbar .brand { padding: 8px 0 0 20px; }
-footer { padding: 60px; background: #CF2730; color: $white; margin-top: 100px; text-align: center; }
-footer a { color: $white; text-decoration: underline; }
+
+
+footer { 
+  background: #CF2730; 
+  color: $white; 
+  height: $footerHeight;
+  margin-top: 20px;
+  
+  a { 
+    color: $white; 
+    text-decoration: underline;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding-top: ($footerHeight/2)
+}
+
+
+.long dd {
+  padding-bottom: 1em;
+}
+
+#reviewForm.affix {
+    top: 10px;
+}
+
+#reviewForm.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 210;
+}

@@ -12,7 +12,10 @@
  %>
 
 <%= semantic_form_for @profile do |f| %>
-  <%= f.inputs :email, :first_name, :last_name, :phone_number, :city, :state, :github, :twitter, :linkedin %>
+  <%= f.inputs :first_name, :last_name, :email, :phone_number, :city, :state %>
+  <%= f.input :github, label: "Github Username"  %>
+  <%= f.input :twitter, label: "Twitter Username"  %>
+  <%= f.input :linkedin, label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
   <div class="well">
     <p>Code Fellows is committed to the principle that all persons shall have equal access to programs, facilities, services, and employment without regard to personal characteristics not related to ability, performance, or qualifications as determined by Code Fellows policy and/or applicable laws.</p> 
@@ -21,7 +24,7 @@
   </div>
 
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
-    <%= apn_f.input :employment, label: "What is your employment status?", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
+    <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
     <%= apn_f.input :gplus, label: "Google Plus Profile URL", input_html: { rows: r } %>
     <%= apn_f.input :skype, label: "Skype ID", input_html: { rows: r } %>
@@ -33,7 +36,7 @@
 
     <%= apn_f.input :cssfloat, label: 'Technical question: What is CSS "float" property do?' , input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= apn_f.input :findout, label: "Where did you find out about us?",input_html: { rows: r, class: "input-xxlarge"  } %>
-    <%= apn_f.input :recommendation, label: "Want someone to recommend you? You can ask someone to provide you a Recommendation(s) to Code Fellows LLC. Don’t worry, the person giving your Recommendation will not see any other part of your application." %>
+    <%= apn_f.input :recommendation, label: "Add emails of anyone who would recommend you. The person giving your recommendation will not see any other part of your application." %>
   <% end %>
 
   <%= f.actions do %>
