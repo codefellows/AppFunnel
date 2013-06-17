@@ -3,8 +3,10 @@ require 'spec_helper'
 feature "Creating Apns" do
 
   before do
-    user = Factory(:confirmed_user)
-    profile = Factory(:profile, user_id: user.id) # name is "The Dude"
+
+    user = Factory(:confirmed_user, email: "dude@abides.com")
+
+    profile = Factory(:profile, user_id: user.id, email: "dude@abides.com") # name is "The Dude"
     sign_in_as!(user)
     click_link "The Dude"
   end

@@ -1,5 +1,6 @@
 <div id="reviewForm">
-<%= semantic_form_for @review do |f| %>
+<!-- <div id="fixed-div"> -->
+<%= semantic_form_for @review, validate: true do |f| %>
 
   <%= f.inputs do %>
   <div style="display:none">

@@ -10,8 +10,7 @@ describe Permission do
 
   describe "as user with own profiles" do
     user = Factory(:confirmed_user, email: "this32dkj@email.com")
-    profile = Factory(:profile, user_id: user.id )
-    @profile = profile
+    profile = Factory(:profile, user_id: user.id, email: user.email )
     subject { Permission.new(user) }
     it { should allow("profiles", "show") }
     it { should allow("profiles", "new") }
@@ -24,8 +23,8 @@ describe Permission do
 
   describe "as user with other's profile" do
     user = Factory(:confirmed_user, email: "some@email.com")
-    profile = Factory(:profile, user_id: (user.id+1) )
-    @profile = profile
+    user_2 = Factory(:confirmed_user, email: "pickles@smith.com")
+    profile = Factory(:profile, user_id: user_2.id, email: user_2.email)
     subject { Permission.new(user) }
 
     it { should_not allow("profiles", "show") }
