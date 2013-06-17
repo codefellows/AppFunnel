@@ -15,3 +15,5 @@
 //= require_tree .
 //= require bootstrap-alert
 //= require bootstrap-affix.js
+//= require rails.validations
+//= require rails.validations.formtastic

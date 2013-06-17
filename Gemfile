@@ -14,6 +14,8 @@ gem 'cancan', '1.6.7'
 
 gem 'bootstrap-sass', '~> 2.3.1.2'
 gem 'formtastic-bootstrap'
+gem 'client_side_validations'
+gem 'client_side_validations-formtastic'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,7 +35,8 @@ group :test, :development do
   gem 'pry-doc'
   gem 'pry-debugger'
   gem 'better_errors'
-  gem 'annotate'
+  gem 'binding_of_caller'
+  gem "annotate", "~> 2.5.0"
   gem 'meta_request'
 end
 
