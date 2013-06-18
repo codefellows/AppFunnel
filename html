@@ -1,0 +1,40 @@
+
++BRAKEMAN REPORT+
+
+Application path: /Users/Billy/Dev/AppFunnel
+Rails version: 3.2.13
+Brakeman version: 2.0.0
+Started at 2013-06-18 14:36:20 -0700
+Duration: 0.817421 seconds
+Checks run: BasicAuth, ContentTag, CrossSiteScripting, DefaultRoutes, Deserialize, DigestDoS, EscapeFunction, Evaluation, Execute, FileAccess, FilterSkipping, ForgerySetting, JRubyXML, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttributes, ModelSerialize, NestedAttributes, QuoteTableName, Redirect, Render, ResponseSplitting, SQL, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionSettings, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoS, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, YAMLParsing
+
+
++SUMMARY+
+
++-------------------+-------+
+| Scanned/Reported  | Total |
++-------------------+-------+
+| Controllers       | 8     |
+| Models            | 6     |
+| Templates         | 30    |
+| Errors            | 0     |
+| Security Warnings | 2 (2) |
++-------------------+-------+
+
++-----------------+-------+
+| Warning Type    | Total |
++-----------------+-------+
+| Redirect        | 1     |
+| Session Setting | 1     |
++-----------------+-------+
+
+
++SECURITY WARNINGS+
+
++------------+--------------------+--------+-----------------+--------------------------------------------------------------->>
+| Confidence | Class              | Method | Warning Type    | Message                                                       >>
++------------+--------------------+--------+-----------------+--------------------------------------------------------------->>
+| High       | ProfilesController | create | Redirect        | Possible unprotected redirect near line 21: redirect_to(+Profi>>
+| High       |                    |        | Session Setting | Session secret should not be included in version control near >>
++------------+--------------------+--------+-----------------+--------------------------------------------------------------->>
+
