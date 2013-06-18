@@ -38,6 +38,7 @@ group :test, :development do
   gem 'binding_of_caller'
   gem "annotate", "~> 2.5.0"
   gem 'meta_request'
+  gem 'brakeman', :require => false
 end
 
 group :test do
