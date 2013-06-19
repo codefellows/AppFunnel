@@ -49,6 +49,10 @@ group :test do
   gem 'launchy'
 end
 
+group :development do
+  gem 'brakeman', :require => false
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
