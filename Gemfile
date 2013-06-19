@@ -51,6 +51,7 @@ end
 
 group :development do
   gem 'brakeman', :require => false
+  gem 'faker', :require => false
 end
 
 gem 'jquery-rails'
