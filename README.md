@@ -7,11 +7,25 @@ The app allows students to apply through a web form and then Code Fellows staff 
 
 ![Application Review](application_review.png)
 
+
+## Installation
+
+Rename `config/initializers/secret_token.rb.template` to `secret_token.rb` and set a random secret token for your application.
+
+    bundle
+    rake db:migrate
+
+Change the `seeds.rb` for the admin.
+
+If you want sample data with test admin and user accounts:
+
+    rake db:populate
+
 ---
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Billy Shih
+Copyright (c) 2013 Billy Shih and Meris Williams
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
