@@ -4,7 +4,6 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
 
-
     factory :admin_user do
       after_create do |user|
         user.update_attribute(:admin, true)

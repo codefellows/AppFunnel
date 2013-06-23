@@ -9,7 +9,7 @@ end
 describe Permission do
 
   describe "as user with own profiles" do
-    user = Factory(:confirmed_user, email: "this32dkj@email.com")
+    user = Factory(:user, email: "this32dkj@email.com")
     profile = Factory(:profile, user_id: user.id )
     @profile = profile
     subject { Permission.new(user) }
