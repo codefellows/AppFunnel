@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
 
   def index
-    @reviews = Review.order('total desc')
+    @reviews = Review.order('exceptional desc').order('total desc')
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
@@ -39,6 +39,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.exceptional ||= 0
     if @review.save && @apn.update_attributes(reviewed: true)
       link = reviews_path
       name = @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize
@@ -93,6 +94,6 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
-        :exceptional, :fit, :note, :resume, :user_id, :work_experience)
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision)
     end
 end

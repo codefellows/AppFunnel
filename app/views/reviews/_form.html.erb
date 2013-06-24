@@ -16,6 +16,8 @@
     <%= f.input :exceptional, value: 0,
       input_html: {min: -1, max: 1 },
       label: "-1 to toss, 1 to fast track, 0 is normal" %>
+    <%= f.input :decision, as: :check_boxes, label: "Decision (optional)", collection: [["Decline", -1], ["Advance to next round", 1]] %>
+
   <% end %>
 
   <%= f.actions do %>
