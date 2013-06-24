@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
 
   def index
-    @reviews = Review.all
+    @reviews = Review.order('total desc')
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
