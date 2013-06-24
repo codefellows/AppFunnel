@@ -2,12 +2,14 @@
 
 # feature "Creating Apns" do
 
-#   before do
-#     user = Factory(:confirmed_user)
-#     profile = Factory(:profile, user_id: user.id, email: user.email) # name is "The Dude"
-#     sign_in_as!(user)
-#     click_link "The Dude"
-#   end
+  before do
+
+    user = Factory(:confirmed_user, email: "dude@abides.com")
+
+    profile = Factory(:profile, user_id: user.id, email: "dude@abides.com") # name is "The Dude"
+    sign_in_as!(user)
+    click_link "The Dude"
+  end
 
 #   scenario "Creating an apn" do
 #     click_link "Create Application"

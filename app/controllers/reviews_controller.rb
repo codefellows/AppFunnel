@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   before_filter :find_review, only: [:show, :edit, :update, :destroy]
   before_filter :find_apn, only: [:create, :update]
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
-  after_filter :calculate_total, only: [:create, :update]
 
   def index
     @reviews = Review.all
@@ -84,12 +83,6 @@ class ReviewsController < ApplicationController
 
     def find_apn
       @apn = Apn.find(review_params[:apn_id])
-    end
-
-    def calculate_total
-      @review.total = (@review.education * 3) + (@review.contribution * 5) +
-        (@review.resume * 2) + (@review.fit * 2) + (@review.work_experience * 2)
-      @review.save
     end
 
     def authorize_admin
