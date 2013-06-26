@@ -24,5 +24,10 @@ class Apn < ActiveRecord::Base
   belongs_to :profile
   has_many :reviews
 
-  validates :why, :diligent, :experience, :cssfloat, :findout, presence: true
+  validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
+  
+  def button_submit?
+    :submit
+  end
+
 end

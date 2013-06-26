@@ -13,10 +13,14 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    binding.pry
     @profile = Profile.create(profile_params)
     @profile.user = current_user
 
-    if @profile.save
+  if params[:commit] == "Save" && @profile.save(false)
+      flash[:notice] = "Your application has been saved"
+      render action: "edit"
+    elsif @profile.save 
       flash[:notice] = "Your application has been created."
       redirect_to @profile
     else
@@ -38,7 +42,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update_attributes(profile_params)
+    binding.pry
+    if params[:commit] == "Save"
+        @profile.attributes = profile_params
+        @profile.save(validate: false)
+    elsif @profile.update_attributes(profile_params)
       flash[:notice] = "Your application has been updated."
       redirect_to @profile
     else
