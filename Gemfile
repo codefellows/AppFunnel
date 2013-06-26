@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+sourc:validate => false e 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
