@@ -3,10 +3,9 @@ class ReviewsController < ApplicationController
   before_filter :find_review, only: [:show, :edit, :update, :destroy]
   before_filter :find_apn, only: [:create, :update]
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
-  after_filter :calculate_total, only: [:create, :update]
 
   def index
-    @reviews = Review.all
+    @reviews = Review.order('exceptional desc').order('total desc')
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
@@ -23,9 +22,14 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
-    @apn_display_attributes = @apn.attributes
-    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
-    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+    if @apn
+      @apn_display_attributes = @apn.attributes
+      excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+      @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+    else
+      flash[:notice] = "All applications have been reviewed!"
+      redirect_to reviews_path
+    end
   end
 
   # GET /reviews/1/edit
@@ -40,7 +44,9 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    if @review.save && @apn.update_attributes(reviewed: true)
+    @review.exceptional ||= 0
+    if @review.save
+      @apn.update_attribute(:reviewed, true)
       link = reviews_path
       name = @apn.profile.first_name.capitalize + " ".to_s + @apn.profile.last_name.capitalize
       redirect_to new_review_path, notice: ("#{name} successfully reviewed." +
@@ -86,12 +92,6 @@ class ReviewsController < ApplicationController
       @apn = Apn.find(review_params[:apn_id])
     end
 
-    def calculate_total
-      @review.total = (@review.education * 3) + (@review.contribution * 5) +
-        (@review.resume * 2) + (@review.fit * 2) + (@review.work_experience * 2)
-      @review.save
-    end
-
     def authorize_admin
       unless current_user.admin
         redirect_to root_path
@@ -100,6 +100,6 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
-        :exceptional, :fit, :note, :resume, :user_id, :work_experience)
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision)
     end
 end

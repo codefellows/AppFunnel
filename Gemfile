@@ -38,6 +38,7 @@ group :test, :development do
   gem 'binding_of_caller'
   gem "annotate", "~> 2.5.0"
   gem 'meta_request'
+  gem 'brakeman', :require => false
 end
 
 group :test do
@@ -54,6 +55,7 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem 'client_side_validations'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
