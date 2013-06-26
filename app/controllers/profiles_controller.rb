@@ -13,11 +13,10 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    binding.pry
     @profile = Profile.create(profile_params)
     @profile.user = current_user
-
-  if params[:commit] == "Save" && @profile.save(false)
+    
+  if params[:commit] == "Save" && @profile.save(validate: false)
       flash[:notice] = "Your application has been saved"
       render action: "edit"
     elsif @profile.save 
@@ -30,27 +29,25 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @display_attributes = @profile.attributes
-    @display_apn_attributes = @profile.apn.attributes
-
-    excluded_attributes = ["user_id", "id", "created_at", "updated_at", "profile_id", "applicant_id", "reviewed"]
-    @display_attributes.delete_if {|key| excluded_attributes.include? key }
-    @display_apn_attributes.delete_if {|key| excluded_attributes.include? key }
   end
 
   def edit
   end
 
   def update
-    binding.pry
     if params[:commit] == "Save"
         @profile.attributes = profile_params
-        @profile.save(validate: false)
+        if @profile.save(validate: false)
+          flash[:notice] = "Your application has been saved."
+        else
+          flash[:notice] = "Your application hasn't been saved."
+        end
+        render action: "edit"
     elsif @profile.update_attributes(profile_params)
-      flash[:notice] = "Your application has been updated."
+      flash[:notice] = "Your application has been submitted."
       redirect_to @profile
     else
-      flash[:alert] = "Your application hasn't been updated."
+      flash[:alert] = "Your application hasn't been submitted."
       render action: "edit"
     end
   end
