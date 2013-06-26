@@ -19,6 +19,8 @@ $sansFontFamily: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-ser
 $baseFontFamily: $sansFontFamily;
 $baseFontSize: 16px;
 $btnPrimaryBackground: #049cdb;
+$tableBackgroundHover: lighten($btnPrimaryBackground, 45%);
+
 .nav { height: 55px; font-size: 20px; }
 .nav li { line-height: 31px; } // height of image below
 textarea { width:300px; }
@@ -26,6 +28,8 @@ textarea { width:300px; }
 // $navbarBackgroundHighlight: #429fc6;
 
 @import "bootstrap";
+
+
 $dtWidth: 200px;
 $footerHeight: 200px;
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
