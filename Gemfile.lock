@@ -107,6 +107,7 @@ GEM
       formtastic (~> 2.2)
     haml (4.0.3)
       tilt
+    has_scope (0.5.1)
     highline (1.6.19)
     hike (1.2.2)
     i18n (0.6.1)
@@ -256,6 +257,7 @@ DEPENDENCIES
   factory_girl (= 2.6.4)
   faker
   formtastic-bootstrap
+  has_scope
   jquery-rails
   launchy
   meta_request
