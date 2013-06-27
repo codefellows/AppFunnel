@@ -2,7 +2,7 @@ AppFunnel::Application.routes.draw do
   resources :reviews
 
   devise_for :users, :controllers => { :registrations => "users/registrations",
-    :passwords => "users/passwords" }
+    :passwords => "users/passwords" }, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   # get '/awaiting_confirmation', :to => "users#confirmation", :as => 'confirm_user'
 
