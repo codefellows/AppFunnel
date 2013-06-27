@@ -4,7 +4,8 @@
 <br>
 <br>
 <p><%= @review_count %> reviewed applications</p>
-<p><%= @unreviewed_count %> applications awaiting review</p>
+<p><%= @unreviewed_count %> applications awaiting review<br>
+  <%= link_to "View unreviewed applications", admin_apns_path %></p>
 <br>
 <h3>Filter applicants:</h3>
 <p>

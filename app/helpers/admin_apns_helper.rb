@@ -1,0 +1,2 @@
+module AdminApnsHelper
+end

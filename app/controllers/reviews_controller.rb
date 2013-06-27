@@ -72,6 +72,7 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
+    @apn.update_attribute(:reviewed, false)
     flash[:notice] = "Review was destroyed"
     redirect_to root_path
   end
