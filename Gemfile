@@ -46,6 +46,7 @@ group :test, :development do
   gem 'capybara', '1.1.2'
   gem 'simplecov', :require => false
   gem 'launchy'
+  gem 'dotenv'
 end
 
 group :test do

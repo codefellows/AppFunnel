@@ -16,3 +16,5 @@
 /config/initializers/secret_token.rb
 coverage/*
 /config/initializers/secret_token.rb
+
+.env

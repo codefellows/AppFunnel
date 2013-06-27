@@ -90,6 +90,7 @@ GEM
       railties (~> 3.1)
       warden (~> 1.1.1)
     diff-lcs (1.2.4)
+    dotenv (0.7.0)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -255,6 +256,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise (= 2.1.0)
+  dotenv
   email_spec (= 1.2.1)
   factory_girl
   faker
