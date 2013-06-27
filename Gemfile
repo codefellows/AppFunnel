@@ -5,8 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'strong_parameters'
 
 gem 'has_scope'
@@ -46,6 +44,7 @@ group :test, :development do
   gem 'capybara', '1.1.2'
   gem 'simplecov', :require => false
   gem 'launchy'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -55,6 +54,10 @@ end
 group :development do
   gem 'brakeman', :require => false
   gem 'faker', :require => false
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
