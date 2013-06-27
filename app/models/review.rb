@@ -25,6 +25,7 @@ class Review < ActiveRecord::Base
 
   validates :education, :contribution, :resume, :fit, :work_experience,
     presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
+  validates :decision, presence: true
 
   before_save :calculate_total
 
