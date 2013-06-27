@@ -3,9 +3,10 @@ class ReviewsController < ApplicationController
   before_filter :find_review, only: [:show, :edit, :update, :destroy]
   before_filter :find_apn, only: [:create, :update]
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
+  has_scope :decision
 
   def index
-    @reviews = Review.order('exceptional desc').order('total desc')
+    @reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
@@ -71,6 +72,7 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
+    @apn.update_attribute(:reviewed, false)
     flash[:notice] = "Review was destroyed"
     redirect_to root_path
   end

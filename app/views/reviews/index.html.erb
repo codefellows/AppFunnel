@@ -4,7 +4,15 @@
 <br>
 <br>
 <p><%= @review_count %> reviewed applications</p>
-<p><%= @unreviewed_count %> applications awaiting review</p>
+<p><%= @unreviewed_count %> applications awaiting review<br>
+  <%= link_to "View unreviewed applications", admin_apns_path %></p>
+<br>
+<h3>Filter applicants:</h3>
+<p>
+<%= link_to "Video Requests", decision: 'Request Video' %> |
+<%= link_to "Interview Requests", decision: 'Request Interview' %> |
+<%= link_to "Declined", decision: 'Decline' %>
+</p>
 <br>
 <table class="table table-striped table-hover">
   <tr>
@@ -14,8 +22,8 @@
     <th>Resume</th>
     <th>Fit</th>
     <th>Work experience</th>
-    <th><%= link_to "Weighted Total", reviews_path %></th>
-    <th><%= link_to "Exceptional", reviews_path %></th>
+    <th><%= link_to "Weighted Total", sort: "total desc", subsort: "exceptional desc" %></th>
+    <th><%= link_to "Exceptional", sort: "exceptional desc", subsort: "total desc" %></th>
     <th></th>
     <th></th>
     <th></th>

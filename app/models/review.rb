@@ -21,6 +21,8 @@
 class Review < ActiveRecord::Base
   belongs_to :apn
 
+  scope :decision, -> decision { where(decision: decision) }
+
   validates :education, :contribution, :resume, :fit, :work_experience,
     presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
 

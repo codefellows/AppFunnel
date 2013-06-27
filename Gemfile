@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'strong_parameters'
 
+gem 'has_scope'
+
 gem 'devise', '2.1.0'
 gem 'cancan', '1.6.7'
 
