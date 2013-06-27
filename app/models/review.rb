@@ -15,6 +15,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  total           :integer
+#  decision        :string(255)
 #
 
 class Review < ActiveRecord::Base

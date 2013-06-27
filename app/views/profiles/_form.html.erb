@@ -40,6 +40,8 @@
   <% end %>
 
   <%= f.actions do %>
-    <%= f.action :submit, label: "Update Application", button_html: { class: "btn btn-primary btn-large" }%>
+    <%= f.action :submit, label: "Submit Application", button_html: { class: "btn btn-primary btn-large" }%>
+    <%= f.action :submit, label: "Save", button_html: { class: "btn", onclick: 
+    "$('form').disableClientSideValidations();" }, :name => 'save_button' %>
   <% end %>
 <% end %>

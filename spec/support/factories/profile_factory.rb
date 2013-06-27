@@ -7,6 +7,6 @@ FactoryGirl.define do
     city "Seattle"
     state "WA"
     gender "Male"
-    user
+    user_id = 1
   end
 end

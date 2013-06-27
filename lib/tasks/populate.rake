@@ -7,7 +7,6 @@ namespace :db do
     @employment = ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"]
 
     example_user = User.create(email: "example@email.com", password: "password")
-    example_user.confirm!
 
     example_profile = Profile.create(
       user_id: example_user.id,
@@ -40,7 +39,6 @@ namespace :db do
     100.times do
       user = User.create(email: Faker::Internet.email,
                    password: "password")
-      user.confirm!
 
       profile = Profile.create(
         user_id: user.id,

@@ -15,9 +15,14 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.create(profile_params)
     @profile.user = current_user
-
-    if @profile.save
-      flash[:notice] = "Your application has been created."
+    
+  if params[:commit] == "Save" && @profile.save(validate: false)
+      flash[:notice] = "Your application has been saved."
+      render action: "edit"
+    elsif @profile.save
+      @profile.apn.submitted = true
+      @profile.apn.save
+      flash[:notice] = "Your application has been submitted."
       redirect_to @profile
     else
       flash[:alert] = "Your application hasn't been created."
@@ -26,23 +31,27 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @display_attributes = @profile.attributes
-    @display_apn_attributes = @profile.apn.attributes
-
-    excluded_attributes = ["user_id", "id", "created_at", "updated_at", "profile_id", "applicant_id", "reviewed"]
-    @display_attributes.delete_if {|key| excluded_attributes.include? key }
-    @display_apn_attributes.delete_if {|key| excluded_attributes.include? key }
   end
 
   def edit
   end
 
   def update
-    if @profile.update_attributes(profile_params)
-      flash[:notice] = "Your application has been updated."
+    if params[:commit] == "Save"
+        @profile.attributes = profile_params
+        if @profile.save(validate: false)
+          flash[:notice] = "Your application has been saved."
+        else
+          flash[:notice] = "Your application hasn't been saved."
+        end
+        render action: "edit"
+    elsif @profile.update_attributes(profile_params)
+      @profile.apn.submitted = true
+      @profile.apn.save
+      flash[:notice] = "Your application has been submitted."
       redirect_to @profile
     else
-      flash[:alert] = "Your application hasn't been updated."
+      flash[:alert] = "Your application hasn't been submitted."
       render action: "edit"
     end
   end
@@ -60,7 +69,7 @@ class ProfilesController < ApplicationController
     end
 
     def authorize
-      if !current_permission.allow?(params[:controller], params[:action])
+      if @profile && !current_permission.allow?(params[:controller], params[:action], @profile.user_id)
         redirect_to root_url, alert: "not authorized"
       end
     end

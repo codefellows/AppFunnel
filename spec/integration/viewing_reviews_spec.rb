@@ -2,11 +2,15 @@ require 'spec_helper'
 
 feature 'Viewing Reviews' do
   scenario 'view all reviews' do
-    user = Factory(:admin_user)
-    review1 = Factory(:review, total: "14")
-    review2 = Factory(:review, total: "56")
+    admin = Factory(:admin_user)
+    sign_in_as!(admin)
 
-    sign_in_as!(user)
-    page.should have_content("56")
+    user = Factory(:user)
+    profile = Factory(:profile, user_id: user.id)
+    apn = Factory(:apn, profile_id: profile.id)
+    review1 = Factory(:review, total: "14", apn_id: apn.id)
+
+    visit '/'
+    page.should have_content("14")
   end
 end
