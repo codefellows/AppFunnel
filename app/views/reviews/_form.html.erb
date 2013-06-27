@@ -1,23 +1,20 @@
 <div id="reviewForm">
 <!-- <div id="fixed-div"> -->
-<%= semantic_form_for @review, validate: true do |f| %>
+<%= semantic_form_for @review, :html => { :class => "form-horizontal" }, validate: true do |f| %>
 
   <%= f.inputs do %>
   <div style="display:none">
     <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
     <%= f.input :apn_id, as: :hidden, input_html: { value: @apn.id } %>
   </div>
-    <%= f.input :education, input_html: {max: 4, min: 1} %>
-    <%= f.input :contribution, input_html: {max: 4, min: 1} %>
-    <%= f.input :resume, input_html: {max: 4, min: 1} %>
-    <%= f.input :fit,input_html: {max: 4, min: 1} %>
-    <%= f.input :work_experience,input_html: {max: 4, min: 1} %>
-    <% f.input :note %>
-    <%= f.input :exceptional, value: 0,
-      input_html: {min: -1, max: 1 },
-      label: "-1 to toss, 1 to fast track, 0 is normal" %>
-    <%= f.input :decision, as: :select, input_html: { multiple: false }, label: "Recommendation (leave blank to save for later)", collection: ["Decline", "Request Video", "Request Interview"] %>
-
+    <%= f.input :education, as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
+    <%= f.input :contribution, as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
+    <%= f.input :resume, as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
+    <%= f.input :fit,as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
+    <%= f.input :work_experience,as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
+    <%= f.input :exceptional, as: :select, value: 0, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ], label: "Rating", input_html: { class: "span2" } %>
+    <%= f.input :decision, as: :select, input_html: { multiple: false, class: "span2" }, label: "Decision (leave blank to save for later)", collection: ["Decline", "Request Video", "Request Interview"] %>
+    <%= f.input :note, label: "Notes", input_html: { rows: 3, class: "span2"  } %>
   <% end %>
 
   <%= f.actions do %>
