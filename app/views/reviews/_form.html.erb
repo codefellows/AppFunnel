@@ -13,7 +13,7 @@
     <%= f.input :fit,input_html: {max: 4, min: 1} %>
     <%= f.input :work_experience,input_html: {max: 4, min: 1} %>
     <% f.input :note %>
-    <%= f.input :exceptional, as: :radio, value: 0, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ],
+    <%= f.input :exceptional, as: :select, value: 0, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ],
       input_html: {min: -1, max: 1 },
       label: "Rating" %>
     <%= f.input :decision, as: :select, input_html: { multiple: false }, label: "Recommendation (leave blank to save for later)", collection: ["Decline", "Request Video", "Request Interview"] %>
