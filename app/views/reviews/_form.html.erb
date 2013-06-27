@@ -16,7 +16,7 @@
     <%= f.input :exceptional, value: 0,
       input_html: {min: -1, max: 1 },
       label: "-1 to toss, 1 to fast track, 0 is normal" %>
-    <%= f.input :decision, as: :select, input_html: { multiple: false }, label: "Recommendation (leave blank to save for later)", collection: ["Decline", "Request Video", "Request Interview"] %>
+    <%= f.input :decision, as: :select, input_html: { multiple: false }, label: "Decision", collection: ["Undecided", "Decline", "Request Video", "Request Interview"] %>
 
   <% end %>
 

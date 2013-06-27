@@ -9,9 +9,11 @@
 <br>
 <h3>Filter applicants:</h3>
 <p>
-<%= link_to "Video Requests", decision: 'Request Video' %> |
-<%= link_to "Interview Requests", decision: 'Request Interview' %> |
-<%= link_to "Declined", decision: 'Decline' %>
+<%= link_to "Undecided", decision: 'Undecided' %> |
+<%= link_to "Request Video", decision: 'Request Video' %> |
+<%= link_to "Request Interview", decision: 'Request Interview' %> |
+<%= link_to "Decline", decision: 'Decline' %> |
+<%= link_to "All", reviews_path %>
 </p>
 <br>
 <table class="table table-striped table-hover">
@@ -24,6 +26,7 @@
     <th>Work experience</th>
     <th><%= link_to "Weighted Total", sort: "total desc", subsort: "exceptional desc" %></th>
     <th><%= link_to "Exceptional", sort: "exceptional desc", subsort: "total desc" %></th>
+    <th><%= link_to "Decision", sort: "decision desc", subsort: "total desc" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -38,7 +41,7 @@
 
 <% @reviews.each do |review| %>
   <tr>
-    <td><%= review.apn.profile.first_name %> <%= review.apn.profile.last_name %></td>
+    <td><%= link_to "#{review.apn.profile.first_name} #{review.apn.profile.last_name}", edit_review_path(review) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>
     <td><%= review.resume %></td>
@@ -46,9 +49,11 @@
     <td><%= review.work_experience %></td>
     <td><%= review.total %></td>
     <td><%= review.exceptional %></td>
-    <td><%= link_to 'Show', review %></td>
-    <td><%= link_to 'Edit', edit_review_path(review) %></td>
-    <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= review.decision %></td>
+    <td></td>
+    <td></td>
+    <t></td>
+
   </tr>
 <% end %>
 </table>
