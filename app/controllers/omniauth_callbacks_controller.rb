@@ -10,4 +10,9 @@ class OmniauthCallbacksController < ApplicationController
        redirect_to new_user_registration_url
      end
    end
+
+   def resource_params
+     params.require(:user).permit(:name, :email, :password, :password_confirmation, :provider, :uid, :github_username)
+   end
+   private :resource_params
 end

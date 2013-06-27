@@ -52,9 +52,6 @@ group :test, :development do
   gem 'simplecov', :require => false
   gem 'launchy'
   gem 'dotenv'
-end
-
-group :test do
   gem "database_cleaner"
 end
 

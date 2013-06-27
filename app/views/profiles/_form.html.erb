@@ -12,8 +12,11 @@
  %>
 
 <%= semantic_form_for @profile, validate: true do |f| %>
-  <%= f.inputs :first_name, :last_name, :email, :phone_number, :city, :state %>
-  <%= f.input :github, label: "Github Username"  %>
+  <%= f.input :email, input_html:{ value: current_user.email}   %>
+  <%= f.inputs :first_name, :last_name, :phone_number, :city, :state %>
+  <%= f.input :github, label: "Github Username", input_html: { value: current_user.github_username }  %> 
+<%=  %>
+
   <%= f.input :twitter, label: "Twitter Username"  %>
   <%= f.input :linkedin, label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
