@@ -39,14 +39,15 @@ group :test, :development do
   gem "annotate", "~> 2.5.0"
   gem 'meta_request'
   gem 'brakeman', :require => false
+  gem 'factory_girl'
+  gem 'email_spec', '1.2.1'
+  gem 'capybara', '1.1.2'
+  gem 'simplecov', :require => false
+  gem 'launchy'
 end
 
 group :test do
-  gem 'capybara', '1.1.2'
-  gem 'email_spec', '1.2.1'
-  gem 'simplecov', :require => false
-  gem 'factory_girl', '2.6.4'
-  gem 'launchy'
+  gem "database_cleaner"
 end
 
 group :development do

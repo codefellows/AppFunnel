@@ -12,6 +12,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.include EmailSpec::Helpers
+  config.use_transactional_fixtures = false
   config.before do
     ActionMailer::Base.deliveries.clear
   end

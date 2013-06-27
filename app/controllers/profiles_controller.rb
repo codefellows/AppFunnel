@@ -17,10 +17,12 @@ class ProfilesController < ApplicationController
     @profile.user = current_user
     
   if params[:commit] == "Save" && @profile.save(validate: false)
-      flash[:notice] = "Your application has been saved"
+      flash[:notice] = "Your application has been saved."
       render action: "edit"
-    elsif @profile.save 
-      flash[:notice] = "Your application has been created."
+    elsif @profile.save
+      @profile.apn.submitted = true
+      @profile.apn.save
+      flash[:notice] = "Your application has been submitted."
       redirect_to @profile
     else
       flash[:alert] = "Your application hasn't been created."
@@ -44,6 +46,8 @@ class ProfilesController < ApplicationController
         end
         render action: "edit"
     elsif @profile.update_attributes(profile_params)
+      @profile.apn.submitted = true
+      @profile.apn.save
       flash[:notice] = "Your application has been submitted."
       redirect_to @profile
     else
@@ -65,7 +69,7 @@ class ProfilesController < ApplicationController
     end
 
     def authorize
-      if !current_permission.allow?(params[:controller], params[:action])
+      if @profile && !current_permission.allow?(params[:controller], params[:action], @profile.user_id)
         redirect_to root_url, alert: "not authorized"
       end
     end

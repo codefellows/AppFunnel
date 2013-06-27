@@ -18,6 +18,7 @@
 #  reviewed       :boolean          default(FALSE)
 #  experience     :text
 #  recommendation :string(255)
+#  submitted      :boolean
 #
 
 class Apn < ActiveRecord::Base

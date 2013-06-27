@@ -3,7 +3,7 @@ AppFunnel::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "users/registrations",
     :passwords => "users/passwords" }
-  get '/awaiting_confirmation', :to => "users#confirmation", :as => 'confirm_user'
+  # get '/awaiting_confirmation', :to => "users#confirmation", :as => 'confirm_user'
   
   root :to => "profiles#show"
   

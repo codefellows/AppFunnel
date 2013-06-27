@@ -8,5 +8,8 @@ FactoryGirl.define do
     gplus "rocks"
     skype "skype!"
     why "just do"
+    experience "greatness is here"
+    recommendation "sauce boss"
+    profile_id = 1
   end
 end
