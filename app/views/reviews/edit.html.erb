@@ -3,3 +3,6 @@
 <%= render "review_apn" %>
 
 <%= link_to 'Back', reviews_path %>
+<br>
+<br>
+<%= link_to 'Destroy', @review, method: :delete, data: { confirm: 'Are you sure?' } %>
