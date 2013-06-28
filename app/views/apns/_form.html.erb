@@ -22,6 +22,11 @@
     <%= f.input :findout, input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= f.input :gplus, input_html: { rows: r } %>
     <%= f.input :skype, input_html: { rows: r } %>
+    <% if @apn.review.decision == "Request Video" %>
+      <%= f.input :video, input_html: { rows: r } %>
+      <%= f. input :code_sample, input_html: { rows: r } %>
+    <% end %>
+
 
   <%= f.actions do %>
     <%= f.action :submit, label: "Update Application", button_html: { class: "btn btn-primary btn-large" }%>

@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def video_email(user)
     @user = user
-    mail(to: @user.email, subject: "Please send us a video")
+    mail(to: @user.email, subject: "Application Stage 2")
   end
 end

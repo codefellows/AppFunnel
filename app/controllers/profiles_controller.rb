@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.create(profile_params)
     @profile.user = current_user
-    
+
   if params[:commit] == "Save" && @profile.save(validate: false)
       flash[:notice] = "Your application has been saved."
       render action: "edit"
@@ -83,8 +83,9 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(
-        :first_name, :last_name, :email, :phone_number, :city, :state, :gender, :github, :twitter, :linkedin,
-        apn_attributes:[:why, :diligent, :cssfloat, :best, :employment, :findout, :gplus, :skype, :experience, :recommendation])
+        :first_name, :last_name, :email, :phone_number, :city, :state, :gender, :github,
+        :twitter, :linkedin, apn_attributes:[:why, :diligent, :cssfloat, :best, :employment,
+        :findout, :gplus, :skype, :experience, :recommendation, :video, :code_sample])
     end
 
     def find_profile

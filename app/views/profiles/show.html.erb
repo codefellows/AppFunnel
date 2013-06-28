@@ -43,6 +43,12 @@
   <dd><%= @profile.apn.findout %></dd>
   <dt>Recommendation contacts</dt>
   <dd><%= @profile.apn.recommendation %></dd>
+  <% if @profile.apn.video %>
+    <dt>Video URL</dt>
+    <dd><%= @profile.apn.video %></dd>
+    <dt>Code Sample</dt>
+    <dd><%= @profile.apn.code_sample %></dd>
+  <% end %>
 </dl>
 
 <%= link_to "Edit Application", edit_profile_path(@profile), class: "btn btn-primary btn-large" %><br>
