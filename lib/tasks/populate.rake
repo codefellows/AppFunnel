@@ -26,7 +26,7 @@ namespace :db do
       profile_id: example_profile.id,
       employment: @employment[rand % 5],
       skype: Faker::Internet.user_name,
-      gplus: Faker::Internet.user_name,
+      gplus: Faker::Internet.url,
       why: Faker::Lorem.paragraphs(rand(1..5)).join("\n"),
       diligent: Faker::Lorem.paragraphs(rand(1..5)).join("\n"),
       best: Faker::Lorem.paragraph(rand(1..5)),

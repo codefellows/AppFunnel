@@ -21,27 +21,26 @@ $baseFontSize: 16px;
 $btnPrimaryBackground: #049cdb;
 $tableBackgroundHover: lighten($btnPrimaryBackground, 45%);
 
+tbody tr th { 
+  background-color: none;   /* or whatever color you want */
+} 
 .nav { height: 55px; font-size: 20px; }
 .nav li { line-height: 31px; } // height of image below
 textarea { width:300px; }
-// $navbarBackground: #2b6c90;
-// $navbarBackgroundHighlight: #429fc6;
 
 @import "bootstrap";
-
 
 $dtWidth: 200px;
 $footerHeight: 200px;
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
 .navbar .brand { padding: 8px 0 0 20px; }
 
-
 footer { 
   background: #CF2730; 
   color: $white; 
   height: $footerHeight;
   margin-top: 20px;
-  
+
   a { 
     color: $white; 
     text-decoration: underline;
@@ -52,7 +51,6 @@ footer {
   text-align: center;
   padding-top: ($footerHeight/2)
 }
-
 
 .long dd {
   padding-bottom: 1em;
