@@ -16,5 +16,5 @@
 coverage/*
 /config/initializers/secret_token.rb
 .env
-/sendgrid.rb
+/config/initializers/sendgrid.rb
 
