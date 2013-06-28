@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "merisw@hotmail.com"
 
   def video_email(user)
     @user = user

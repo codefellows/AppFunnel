@@ -14,4 +14,6 @@
 /log/*.log
 /tmp
 coverage/*
+/config/initializers/secret_token.rb
+/sendgrid.rb
 /.env
