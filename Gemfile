@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
 gem 'pg'
 
 gem 'strong_parameters'
@@ -58,6 +59,10 @@ end
 group :development do
   gem 'brakeman', :require => false
   gem 'faker', :require => false
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
