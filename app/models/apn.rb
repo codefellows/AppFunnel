@@ -23,10 +23,11 @@
 
 class Apn < ActiveRecord::Base
   belongs_to :profile
-  has_many :reviews
+  has_one :review
+  accepts_nested_attributes_for :review
 
   validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
-  
+
   def button_submit?
     :submit
   end

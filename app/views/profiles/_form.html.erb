@@ -18,8 +18,8 @@
   <%= f.input :linkedin, prepend: 'http://linkedin.com/in/', label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
   <div class="well">
-    <p>Code Fellows is committed to the principle that all persons shall have equal access to programs, facilities, services, and employment without regard to personal characteristics not related to ability, performance, or qualifications as determined by Code Fellows policy and/or applicable laws.</p> 
-  
+    <p>Code Fellows is committed to the principle that all persons shall have equal access to programs, facilities, services, and employment without regard to personal characteristics not related to ability, performance, or qualifications as determined by Code Fellows policy and/or applicable laws.</p>
+
     <p>Code Fellows prohibits discrimination, harassment and bullying against any person because of age, ancestry, color, disability or handicap, national origin, race, religion, gender, sexual or affectional orientation, gender identity, appearance, matriculation, political affiliation, marital status, veteran status or any other characteristic protected by law.  Code Fellows expects that its employees, volunteers, members, and other constituents of Code Fellows, when and where ever those individuals are conducting Code Fellows business or participating in Code Fellows events or activities, shall maintain an environment free of discrimination, including harassment, bullying, or retaliation.</p>
   </div>
 
@@ -37,11 +37,20 @@
     <%= apn_f.input :cssfloat, label: 'Technical question: What is CSS "float" property do?' , input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= apn_f.input :findout, label: "Where did you find out about us?",input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= apn_f.input :recommendation, label: "Add emails of anyone who would recommend you. The person giving your recommendation will not see any other part of your application." %>
+    <% if @profile.apn %>
+      <% if @profile.apn.review %>
+        <% if @profile.apn.review.decision == "Request Video"%>
+          <%= apn_f.input :video, label: "URL to your video:", input_html: { rows: r, class: "input-xxlarge" } %>
+          <%= apn_f.input :code_sample, label: "URL to your code sample:", input_html: { rows: r, class: "input-xxlarge" } %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
+
 
   <%= f.actions do %>
     <%= f.action :submit, label: "Submit Application", button_html: { class: "btn btn-primary btn-large" }%>
-    <%= f.action :submit, label: "Save", button_html: { class: "btn", onclick: 
+    <%= f.action :submit, label: "Save", button_html: { class: "btn", onclick:
     "$('form').disableClientSideValidations();" }, :name => 'save_button' %>
   <% end %>
 <% end %>

@@ -1,0 +1,12 @@
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 12711) running in data directory "/usr/local/var/postgres"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 12711) running in data directory "/usr/local/var/postgres"?
+LOG:  database system was interrupted; last known up at 2013-06-28 12:01:01 PDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  redo starts at 0/24F8FD0
+LOG:  record with zero length at 0/24FAF20
+LOG:  redo done at 0/24FAEF0
+LOG:  last completed transaction was at log time 2013-06-28 12:08:13.20512-07
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
