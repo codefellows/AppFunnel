@@ -1,6 +1,11 @@
 <div id="login">
   <h2>Have an account?<br>
-    <small>Login with your account info</small></h2>
+    <small>If you signed up using Github</small>
+  </h2>
+    <p><%= link_to 'Sign in with Github', user_omniauth_authorize_path(:github), class: "btn btn-large btn-primary" %></p>
+    <hr>
+
+    <p>If you signed up directly, login here:</p>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.label :email %>
@@ -17,5 +22,10 @@
     <% end -%>
 
     <div><%= f.submit "Sign in", class: "btn btn-large btn-primary" %></div>
+
+
+
+  
+
   <% end %>
 </div>

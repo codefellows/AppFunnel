@@ -18,13 +18,13 @@
     <div class="span4">
       <dl class="dl-horizontal">
         <dt>Github</dt>
-        <dd><%= @apn.profile.github %></dd>
+        <dd><%= link_to @apn.profile.github, "http://github.com/" + @apn.profile.github %></dd>
         <dt>Twitter</dt>
-        <dd><%= @apn.profile.twitter %></dd>
+        <dd><%= link_to @apn.profile.twitter, "http://twitter.com/" + @apn.profile.twitter %></dd>
         <dt>Linkedin</dt>
-        <dd><%= @apn.profile.linkedin %></dd>
+        <dd><%= link_to @apn.profile.linkedin, "http://linkedin.com/in/" + @apn.profile.linkedin %></dd>
         <dt>Google Plus</dt>
-        <dd><%= @apn.profile.apn.gplus %></dd>
+        <dd><%= link_to "Go to profile", @apn.profile.apn.gplus %></dd>
         <dt>Skype</dt>
         <dd><%= @apn.profile.apn.skype %></dd>
       </dl>

@@ -5,19 +5,24 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'strong_parameters'
 
 gem 'has_scope'
 
 gem 'devise', '2.1.0'
+gem 'omniauth-github'
+
 gem 'cancan', '1.6.7'
 
 gem 'bootstrap-sass', '~> 2.3.1.2'
 gem 'formtastic-bootstrap'
 gem 'client_side_validations'
 gem 'client_side_validations-formtastic'
+
+
+gem 'octokit'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,9 +51,7 @@ group :test, :development do
   gem 'capybara', '1.1.2'
   gem 'simplecov', :require => false
   gem 'launchy'
-end
-
-group :test do
+  gem 'dotenv'
   gem "database_cleaner"
 end
 
