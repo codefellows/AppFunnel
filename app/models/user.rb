@@ -20,6 +20,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  admin                  :boolean          default(FALSE)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  github_username        :string(255)
 #
 
 class User < ActiveRecord::Base

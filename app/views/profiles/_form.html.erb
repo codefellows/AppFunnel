@@ -6,19 +6,16 @@
   <li>Be thorough with your answers</li>
 </ul>
 
-<%
+<% 
   r = 6
-  c = 60
  %>
 
 <%= semantic_form_for @profile, validate: true do |f| %>
   <%= f.input :email, input_html:{ value: current_user.email}   %>
   <%= f.inputs :first_name, :last_name, :phone_number, :city, :state %>
-  <%= f.input :github, label: "Github Username", input_html: { value: current_user.github_username }  %>
-<%=  %>
-
-  <%= f.input :twitter, label: "Twitter Username"  %>
-  <%= f.input :linkedin, label: "LinkedIn Username"  %>
+  <%= f.input :github, prepend: 'http://github.com/', label: "Github Username", input_html: { value: current_user.github_username }  %> 
+  <%= f.input :twitter, prepend: '@', label: "Twitter Username"  %>
+  <%= f.input :linkedin, prepend: 'http://linkedin.com/in/', label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
   <div class="well">
     <p>Code Fellows is committed to the principle that all persons shall have equal access to programs, facilities, services, and employment without regard to personal characteristics not related to ability, performance, or qualifications as determined by Code Fellows policy and/or applicable laws.</p>

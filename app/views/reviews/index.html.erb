@@ -1,11 +1,11 @@
-<h1>Application Review Dashboard</h1>
-<br>
+<h1>Review Dashboard</h1>
+<h2><%= @unreviewed_count %> applications awaiting review</h2>
 <%= link_to 'Review a New Application', new_review_path, class: "btn btn-primary btn-large" %>
+<%= link_to "View All Unreviewed Applications", admin_apns_path, class: "btn" %>
 <br>
 <br>
 <p><%= @review_count %> reviewed applications</p>
-<p><%= @unreviewed_count %> applications awaiting review<br>
-  <%= link_to "View unreviewed applications", admin_apns_path %></p>
+  
 <br>
 <h3>Filter applicants:</h3>
 <p>
@@ -39,7 +39,30 @@
   </tr>
 
 <% @reviews.each do |review| %>
-  <tr>
+
+<%
+  row_class = ""
+  case review.decision
+  when "Request Video"
+    row_class = "warning"
+  when "Request Interview"
+    row_class = "success"
+  when "Decline"
+    row_class = "error"
+  end
+ %>
+<% exceptional = ""
+  case review.exceptional
+  when -1
+    exceptional = "Below Avg"
+  when 0
+    exceptional = "Average"
+  when 1
+    exceptional = "Exceptional"
+  end
+  %>
+
+  <tr class="<%= row_class %>">
     <td><%= link_to "#{review.apn.profile.first_name} #{review.apn.profile.last_name}", edit_review_path(review) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>
@@ -47,10 +70,8 @@
     <td><%= review.fit %></td>
     <td><%= review.work_experience %></td>
     <td><%= review.total %></td>
-    <td><%= review.exceptional %></td>
+    <td><%= exceptional %></td>
     <td><%= review.decision %></td>
-
-
   </tr>
 <% end %>
 </table>

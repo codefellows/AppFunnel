@@ -31,20 +31,23 @@ textarea { width:300px; }
 @import "bootstrap";
 
 $dtWidth: 200px;
-$footerHeight: 200px;
+
 .navbar-inner { background-image: url(/assets/nav_bg.png); }
 .navbar .brand { padding: 8px 0 0 20px; }
 
+$footerHeight: 200px;
+
 footer { 
-  background: #CF2730; 
+  background: url(/assets/struckaxiom_red.png) #ce2830; 
+  box-shadow: inset 4px -4px 4px rgba(0,0,0,0.3),inset -4px 4px 4px rgba(0,0,0,0.3);
   color: $white; 
   height: $footerHeight;
   margin-top: 20px;
-
   a { 
     color: $white; 
     text-decoration: underline;
   }
+
 }
 
 .footer {

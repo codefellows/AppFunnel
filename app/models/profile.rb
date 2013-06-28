@@ -19,7 +19,7 @@
 #
 
 class Profile < ActiveRecord::Base
-  has_one :apn, autosave: true, :dependent => :delete
+  has_one :apn, :dependent => :delete
   accepts_nested_attributes_for :apn
   belongs_to :user
 
