@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   before_filter :find_review, only: [:show, :edit, :update, :destroy]
   before_filter :find_apn, only: [:create, :update]
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
+  after_filter :send_email, only: [:create, :update]
   has_scope :decision
 
   def index
@@ -104,4 +105,13 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
         :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision)
     end
+
+    def send_email
+      @user = Profile.find(review_params[:user_id])
+
+      if @review.decision == "Request Video"
+        UserMailer.video_email(@user).deliver
+      end
+    end
+
 end
