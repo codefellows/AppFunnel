@@ -14,6 +14,6 @@ class CreateApns < ActiveRecord::Migration
       t.references :profile
       t.timestamps
     end
-    add_index :apns, :profile_id
+    # add_index :apns, :profile_id
   end
 end

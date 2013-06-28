@@ -5,6 +5,7 @@ FactoryGirl.define do
     resume "1"
     fit "1"
     work_experience "1"
+    decision "Undecided"
     total "14"
   end
 end
