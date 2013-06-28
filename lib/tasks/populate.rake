@@ -33,7 +33,7 @@ namespace :db do
       cssfloat: Faker::Lorem.paragraph(rand(1..5)),
       findout: Faker::Lorem.paragraph(rand(1..5)),
       experience: Faker::Lorem.paragraphs(rand(1..5)).join("\n"),
-      recommendation: Faker::Lorem.paragraph(rand(1..5))
+      recommendation: Faker::Internet.email
     )
 
     100.times do
@@ -65,7 +65,7 @@ namespace :db do
         cssfloat: Faker::Lorem.paragraph(rand(1..5)),
         findout: Faker::Lorem.paragraph(rand(1..5)),
         experience: Faker::Lorem.paragraphs(rand(1..5)).join("\n"),
-        recommendation: Faker::Lorem.paragraph(rand(1..5))
+        recommendation: Faker::Internet.email
       )
     end
   end
