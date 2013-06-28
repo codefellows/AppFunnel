@@ -45,4 +45,10 @@
   <dd><%= @apn.findout %></dd>
   <dt>Recommendation contacts</dt>
   <dd><%= @apn.recommendation %></dd>
+  <% if @apn.video %>
+    <dt>Video URL</dt>
+    <dd><%= @apn.video %></dd>
+    <dt>Code Sample</dt>
+    <dd><%= @apn.code_sample %></dd>
+  <% end %>
 </dl>
