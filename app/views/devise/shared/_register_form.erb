@@ -1,5 +1,8 @@
   <h2>New around here?
     <br><small>Sign up to begin your application</small></h2>
+    <p><%= link_to 'Sign Up with GitHub', user_omniauth_authorize_path(:github), class: "btn btn-large btn-primary" %></p>
+    <hr>
+    <p>Or sign up directly:</p>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
@@ -11,5 +14,5 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
 
-    <div><%= f.submit "Sign up", class: "btn btn-primary btn-large" %></div>
+    <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
   <% end %>

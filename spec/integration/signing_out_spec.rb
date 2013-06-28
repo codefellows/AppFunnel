@@ -6,6 +6,6 @@ feature "Signing out" do
     sign_in_as!(user)
     visit '/'
     click_link "Log Out"
-    page.should have_content("You need to sign in or sign up before continuing.")
+    page.should have_content("You need to log in or sign up before continuing.")
   end
 end

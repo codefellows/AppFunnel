@@ -1,8 +1,8 @@
 <div id="login">
   <h2>Have an account?<br>
-    <small>If you signed up using Github</small>
+    <small>If you signed up using GitHub</small>
   </h2>
-    <p><%= link_to 'Sign in with Github', user_omniauth_authorize_path(:github), class: "btn btn-large btn-primary" %></p>
+    <p><%= link_to 'Log In with GitHub', user_omniauth_authorize_path(:github), class: "btn btn-large btn-primary" %></p>
     <hr>
 
     <p>If you signed up directly, login here:</p>
@@ -21,7 +21,7 @@
       <% end %>
     <% end -%>
 
-    <div><%= f.submit "Sign in", class: "btn btn-large btn-primary" %></div>
+    <div><%= f.submit "Log In", class: "btn btn-primary" %></div>
 
 
 
