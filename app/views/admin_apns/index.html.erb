@@ -1,11 +1,16 @@
 <h1>Unreviewed Applications</h1>
 
-<ul>
+<p><strong>Total: <%= @apns.count %></strong></p>
+
+<table class="table table-striped table-hover ">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Created</th>
   <% @apns.each do |apn| %>
-    <li>
-      <%= apn.profile.first_name %> <%= apn.profile.last_name %>
-      <%= apn.created_at %>
-      <%= link_to "View", profile_apn_path(apn.profile, apn) %>
-    </li>
+    <tr>
+      <td><%= link_to apn.profile.first_name + " " + apn.profile.last_name, new_review_path(apn) %></td>
+      <td><%= apn.created_at %></td>
   <% end %>
-</ul>
+  </tbody>
+</table>

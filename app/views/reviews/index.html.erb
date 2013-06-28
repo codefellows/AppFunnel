@@ -27,9 +27,6 @@
     <th><%= link_to "Weighted Total", sort: "total desc", subsort: "exceptional desc" %></th>
     <th><%= link_to "Exceptional", sort: "exceptional desc", subsort: "total desc" %></th>
     <th><%= link_to "Decision", sort: "decision desc", subsort: "total desc" %></th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
   <tr>
@@ -37,6 +34,8 @@
     <% @averages.each do |avg| %>
       <td><%= "%.2f" % avg.to_f %></td>
     <% end %>
+    <td></td>
+      <td></td>
   </tr>
 
 <% @reviews.each do |review| %>
@@ -50,9 +49,7 @@
     <td><%= review.total %></td>
     <td><%= review.exceptional %></td>
     <td><%= review.decision %></td>
-    <td></td>
-    <td></td>
-    <t></td>
+
 
   </tr>
 <% end %>
