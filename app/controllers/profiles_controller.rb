@@ -84,7 +84,7 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(
         :first_name, :last_name, :email, :phone_number, :city, :state, :gender, :github,
-        :twitter, :linkedin, apn_attributes:[:why, :diligent, :cssfloat, :best, :employment,
+        :twitter, :linkedin, apn_attributes:[:id, :why, :diligent, :cssfloat, :best, :employment,
         :findout, :gplus, :skype, :experience, :recommendation, :video, :code_sample])
     end
 
