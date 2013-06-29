@@ -4,7 +4,7 @@ AppFunnel::Application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations",
     passwords: "users/passwords", omniauth_callbacks: "omniauth_callbacks"}
 
-  root to: "profiles#show"
+  root to: "profiles#edit"
 
   resources :profiles do
     resources :apns
