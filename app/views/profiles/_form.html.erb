@@ -26,7 +26,7 @@
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
     <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
-    <%= apn_f.input :gplus, label: "Google Plus Profile URL", input_html: { rows: r } %>
+    <%= apn_f.input :gplus, prepend: 'http://', label: "Google Plus Profile URL", input_html: { rows: r } %>
     <%= apn_f.input :skype, label: "Skype ID", input_html: { rows: r } %>
 
     <%= apn_f.input :why, label: "Why do you want to join Code Fellows?", input_html: { rows: r, class: "input-xxlarge"  } %>
@@ -40,8 +40,8 @@
     <% if @profile.apn %>
       <% if @profile.apn.review %>
         <% if @profile.apn.review.decision == "Request Video"%>
-          <%= apn_f.input :video, label: "URL to your video:", input_html: { rows: r, class: "input-xxlarge" } %>
-          <%= apn_f.input :code_sample, label: "URL to your code sample:", input_html: { rows: r, class: "input-xxlarge" } %>
+          <%= apn_f.input :video, label: "URL to your video:", prepend: 'http://', input_html: { rows: r, class: "input-xxlarge" } %>
+          <%= apn_f.input :code_sample, label: "URL to your code sample:", prepend: 'http://', input_html: { rows: r, class: "input-xxlarge" } %>
         <% end %>
       <% end %>
     <% end %>

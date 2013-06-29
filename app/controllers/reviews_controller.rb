@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1.json
   def update
     if @review.update_attributes(review_params)
-      redirect_to @review, notice: "Review was successfully updated."
+      redirect_to edit_review_path(@review), notice: ("Review was successfully updated.")
     else
       render action: "edit"
     end
