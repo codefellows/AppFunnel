@@ -5,7 +5,7 @@ The app allows students to apply through a web form and then Code Fellows staff 
 
 ![Application Form](application_form.png)
 
-![Application Review](application_review.png)
+![Application Review](dashboard.png)
 
 
 ## Installation
