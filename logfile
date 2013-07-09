@@ -10,3 +10,5 @@ LOG:  redo done at 0/24FAEF0
 LOG:  last completed transaction was at log time 2013-06-28 12:08:13.20512-07
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 571) running in data directory "/usr/local/var/postgres"?
