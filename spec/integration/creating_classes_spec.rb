@@ -18,6 +18,7 @@ feature "Creating classes" do
     #fill_in "cost" with: "4000"
     #fill_in "Class type" with: "boot camp"
     #fill out application steps
+    #verify it commited.
 
   end
 
