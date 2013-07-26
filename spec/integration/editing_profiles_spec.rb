@@ -6,7 +6,7 @@ feature "Editing profile and application" do
     profile = Factory(:profile, email: "spanky@cavendish.com", user_id: user.id)
     application = Factory(:apn, profile_id: profile.id)
     sign_in_as!(user)
-    click_link "Edit Application"
+
   end
 
   scenario "editing a profile" do
