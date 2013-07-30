@@ -1,0 +1,12 @@
+<div id='course'>
+  <h2><%= @course.name %></h2>
+  <%= link_to "Edit Class", [:edit, @course] %>
+  <%= link_to "Delete Class", [@course], :method => :delete, :confirm => "Are you sure you want to delete this course?" %>
+  <%= simple_format(@course.description) %>
+  <%= @course.desc_url %>
+  <%= @course.start_date %>
+  <%= @course.end_date %>
+  <%= @course.cost %>
+  <%= @course.course_type %>
+</div>
+

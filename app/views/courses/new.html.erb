@@ -1,0 +1,20 @@
+<p>Enter Course Information</p>
+
+
+<%= semantic_form_for @course do |f| %>
+  <%= f.inputs :name%>
+  <%= f.inputs :description%>
+  <%= f.inputs :desc_url%>
+  <%= f.inputs :start_date%>
+  <%= f.inputs :end_date%>
+  <%= f.inputs :cost%>
+  <%= f.inputs :course_type%>
+
+
+
+  <%= f.actions do %>
+    <%= f.action :submit, label: "Create Class", button_html: { class: "btn btn-primary btn-large" }%>
+  <% end %>
+<% end %>
+
+
