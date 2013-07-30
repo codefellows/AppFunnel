@@ -8,12 +8,11 @@ feature "Creating classes" do
   end
 
   scenario "reviewer can create a new class" do
-    #pending('reviewer can create a new class')
     click_link('Manage Classes')
     click_link('New Class')
     fill_in "Name", with: "Silver Boot camp"
     fill_in "Description", with: "This class will be a beginning coding boot camp to prepare you for the gold boot camp."
-    fill_in "Desc url", with: "http://codefellows.org"
+    fill_in "Class Description URL", with: "http://codefellows.org"
     page.select 'July', :from => 'course[start_date(2i)]'
     page.select '2013', :from => 'course[start_date(1i)]'
     page.select '17', :from => 'course[start_date(3i)]'
@@ -21,11 +20,10 @@ feature "Creating classes" do
     page.select '2013', :from => 'course[end_date(1i)]'
     page.select '17', :from => 'course[end_date(3i)]'
     fill_in "Cost", with: "4000"
-    fill_in "Course type", with: "boot camp"
+    page.select 'Boot Camp', :from => 'course[course_type]'
     click_button 'Create Class'
     page.should have_content('Class has been created.')
-    #fill out application steps
-    #verify it commited.
+
 
   end
 end

@@ -8,7 +8,7 @@ feature "Editing classes" do
   end
 
   scenario "reviewer can edit a class" do
-    course = Factory(:course, :name => "Silver Boot Camp", :description => "This boot camp is cool")
+    course = Factory(:course, :name => "Silver Boot Camp", :description => "This boot camp is cool", :course_type => "Boot Camp")
     click_link('Manage Classes')
     click_link('Silver Boot Camp')
     click_link('Edit Class')
