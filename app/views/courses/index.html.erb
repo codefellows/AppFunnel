@@ -1,0 +1,8 @@
+<h1>Manage Classes</h1>
+ <ul>
+<% @courses.each do |course| %>
+
+  <li><%= link_to course.name, course %></li>
+<% end %>
+</ul>
+<%= link_to "New Class", new_course_path %>
