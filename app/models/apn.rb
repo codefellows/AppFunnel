@@ -28,6 +28,7 @@ class Apn < ActiveRecord::Base
   has_many :registrations
   has_many :courses, through: :registrations
 
+
   validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
 
   def button_submit?

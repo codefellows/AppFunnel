@@ -42,8 +42,6 @@ group :test, :development do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-debugger'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem "annotate", "~> 2.5.0"
   gem 'meta_request'
   gem 'brakeman', :require => false
@@ -59,6 +57,8 @@ end
 group :development do
   gem 'brakeman', :require => false
   gem 'faker', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do

@@ -6,14 +6,16 @@
   <li>Be thorough with your answers</li>
 </ul>
 
-<% 
+<%
   r = 6
  %>
+<%= puts @profile.inspect %>
 
 <%= semantic_form_for @profile, validate: true do |f| %>
+
   <%= f.input :email, input_html:{ value: current_user.email}   %>
   <%= f.inputs :first_name, :last_name, :phone_number, :city, :state %>
-  <%= f.input :github, prepend: 'http://github.com/', label: "Github Username", input_html: { value: current_user.github_username }  %> 
+  <%= f.input :github, prepend: 'http://github.com/', label: "Github Username", input_html: { value: current_user.github_username }  %>
   <%= f.input :twitter, prepend: '@', label: "Twitter Username"  %>
   <%= f.input :linkedin, prepend: 'http://linkedin.com/in/', label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
@@ -24,6 +26,7 @@
   </div>
 
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
+    <%= apn_f.input :courses, as: :check_boxes, label: "Select Class", :collection => Course.order("name ASC").all %>
     <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
     <%= apn_f.input :gplus, prepend: 'http://', label: "Google Plus Profile URL", input_html: { rows: r } %>
