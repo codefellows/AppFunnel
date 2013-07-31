@@ -8,5 +8,6 @@ FactoryGirl.define do
     state "WA"
     gender "Male"
     user_id = 1
+    github "blerg"
   end
 end

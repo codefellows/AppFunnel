@@ -6,14 +6,14 @@
   <li>Be thorough with your answers</li>
 </ul>
 
-<% 
+<%
   r = 6
  %>
 
 <%= semantic_form_for @profile, validate: true do |f| %>
   <%= f.input :email, input_html:{ value: current_user.email}   %>
   <%= f.inputs :first_name, :last_name, :phone_number, :city, :state %>
-  <%= f.input :github, prepend: 'http://github.com/', label: "Github Username", input_html: { value: current_user.github_username }  %> 
+  <%= f.input :github, prepend: 'http://github.com/', label: "Github Username", input_html: { value: current_user.github_username }  %>
   <%= f.input :twitter, prepend: '@', label: "Twitter Username"  %>
   <%= f.input :linkedin, prepend: 'http://linkedin.com/in/', label: "LinkedIn Username"  %>
   <%= f.input :gender, as: :radio, collection: ["Male", "Female"] %>
@@ -46,7 +46,6 @@
       <% end %>
     <% end %>
   <% end %>
-
 
   <%= f.actions do %>
     <%= f.action :submit, label: "Submit Application", button_html: { class: "btn btn-primary btn-large" }%>

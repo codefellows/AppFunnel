@@ -34,5 +34,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+
+
   include Authentication::ActiveRecordHelpers
 end

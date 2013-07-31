@@ -21,6 +21,8 @@
 class Review < ActiveRecord::Base
   belongs_to :apn
 
+  acts_as_taggable
+
   scope :decision, -> decision { where(decision: decision) }
 
   validates :education, :contribution, :resume, :fit, :work_experience,

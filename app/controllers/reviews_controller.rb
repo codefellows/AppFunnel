@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
+
     if @apn
       @apn_display_attributes = @apn.attributes
       excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
@@ -32,14 +33,6 @@ class ReviewsController < ApplicationController
       flash[:notice] = "All applications have been reviewed!"
       redirect_to reviews_path
     end
-  end
-
-  # GET /reviews/1/edit
-  def edit
-    @apn_display_attributes = @review.apn.attributes
-    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
-    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
-
   end
 
   # POST /reviews
@@ -57,6 +50,14 @@ class ReviewsController < ApplicationController
     else
       render action: "new", alert: "something went wrong with submitting the review"
     end
+  end
+
+  # GET /reviews/1/edit
+  def edit
+    @apn_display_attributes = @review.apn.attributes
+    excluded_attributes = ["profile_id", "id", "applicant_id", "created_at", "updated_at"]
+    @apn_display_attributes.delete_if {|key| excluded_attributes.include? key }
+
   end
 
   # PATCH/PUT /reviews/1
@@ -103,8 +104,15 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
-        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision)
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision, :tag_list, :tag)
     end
+
+    # Need to permit these params for tagging?
+    #   def user_profile_apn_params
+    #   params.require(:user).permit(:tag_list)
+    #   params.require(:apn).permit(:apn_id)
+    #   params.require(:profile).permit(:profile_id)
+    # end
 
     def send_email
       @user = Profile.find(review_params[:user_id])
