@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729222334) do
+ActiveRecord::Schema.define(:version => 20130730032012) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20130729222334) do
   end
 
   add_index "apns", ["profile_id"], :name => "index_apns_on_profile_id"
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "desc_url"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "cost"
+    t.string   "course_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"

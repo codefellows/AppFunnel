@@ -1,0 +1,23 @@
+<p>Edit Course Information</p>
+
+<%
+  r = 6
+  c = 60
+ %>
+
+<%= semantic_form_for @course do |f| %>
+  <%= f.input :name%>
+  <%= f.input :course_type, as: :select, :collection => ["Boot Camp", "Workshop", "Evening Class"]%>
+  <%= f.input :description, input_html: { rows: r, cols: c, class: "input-xxlarge"  } %>
+  <%= f.input :desc_url, label: "Class Description URL", as: :url%>
+  <%= f.input :start_date%>
+  <%= f.input :end_date%>
+  <%= f.input :cost%>
+
+
+  <%= f.actions do %>
+    <%= f.action :submit, label: "Update Class", button_html: { class: "btn btn-primary btn-large" }%>
+  <% end %>
+<% end %>
+
+
