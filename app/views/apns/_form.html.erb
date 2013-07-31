@@ -10,11 +10,15 @@
   r = 6
   c = 60
  %>
+
+
 <%= semantic_form_for [@profile, @apn] do |f| %>
+
 
     <%= f.inputs :email, :first_name, :last_name, :phone_number, :city, :state, for: :profile%>
     <%= f.inputs :gender, :as => :radio, :collection => ["Male", "Female"], for: :profile %>
     <%= f.input :why, input_html: { rows: r, class: "input-xxlarge"  } %>
+
     <%= f.input :diligent, input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= f.input :cssfloat, input_html: { rows: r, class: "input-xxlarge"  } %>
     <%= f.input :best, input_html: { rows: r, class: "input-xxlarge"  } %>

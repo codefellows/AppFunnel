@@ -8,6 +8,7 @@ feature "Creating profile and application" do
   end
 
   scenario "can submit an application" do
+    puts page.body
     fill_in "First name", with: "Spanky"
     fill_in "Last name", with: "Cavendish"
     fill_in "Email", with: "spanky@cavendish.com"
@@ -19,7 +20,7 @@ feature "Creating profile and application" do
     fill_in "What is your experience programming? We don't require experience with Rails, but the best candidates will have some experience writing code.", with: "I studied for years"
     fill_in 'Technical question: What is CSS "float" property do?', with: "Magic!"
     fill_in "Where did you find out about us?", with: "In heaven"
-
+    page.check("Select Class")
     click_button "Submit Application"
 
     page.should have_content("Your application has been submitted.")
