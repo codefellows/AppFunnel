@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :profile do
     first_name "The"
     last_name "Dude"
-    email :email
+    sequence(:email) { |n| "user#{n}@cavendish.com" }
     phone_number "3602012204"
     city "Seattle"
     state "WA"

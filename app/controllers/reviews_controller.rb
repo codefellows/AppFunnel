@@ -79,6 +79,10 @@ class ReviewsController < ApplicationController
     redirect_to root_path
   end
 
+  def manage_tags
+    @reviews = Review.all
+  end
+
   private
 
     def find_review

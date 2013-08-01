@@ -17,7 +17,7 @@ feature "Editing Reviews" do
 
   end
 
-  scenario "Review should be able to edit reviews" do
+  scenario "Reviewer should be able to edit reviews" do
 
     within("h2") {page.should have_content("Reviewing")}
 

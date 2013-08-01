@@ -1,0 +1,7 @@
+<p>
+  <% @reviews.each do |review| %>
+    <% review.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  <% end %>
+</p>
