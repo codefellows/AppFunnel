@@ -1,6 +1,6 @@
 require "spec_helper"
 
-feature "Creating Tags" do
+feature "Creating Reviews" do
 
   before do
     profile = Factory(:profile, first_name: "Oscar")
