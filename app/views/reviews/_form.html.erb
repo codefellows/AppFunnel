@@ -17,7 +17,7 @@
     <%= f.input :resume, as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
     <%= f.input :fit,as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
     <%= f.input :work_experience,as: :select, :collection => [1,2,3,4], input_html: { class: "span1" } %>
-    <%= f.input :exceptional, as: :select, value: 0, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ], label: "Rating", input_html: { class: "span2" } %>
+    <%= f.input :exceptional, as: :select, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ], label: "Rating", input_html: { value: 0, class: "span2" } %>
     <%= f.input :decision, as: :select, input_html: { multiple: false, class: "span2" }, label: "Decision", collection: ["Undecided", "Decline", "Request Video", "Request Interview"] %>
     <%= f.input :note, label: "Notes", input_html: { rows: 3, class: "span2"  } %>
 
