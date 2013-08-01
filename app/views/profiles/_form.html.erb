@@ -25,7 +25,7 @@
   </div>
 
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
-    <%= apn_f.input :courses, as: :check_boxes, label: "Select Class", :collection => Course.order("name ASC").all %>
+    <%= apn_f.input :courses, as: :check_boxes, label: "Select Class" %>
     <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
     <%= apn_f.input :gplus, prepend: 'http://', label: "Google Plus Profile URL", input_html: { rows: r } %>
