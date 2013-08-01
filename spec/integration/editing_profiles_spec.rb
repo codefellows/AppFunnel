@@ -5,6 +5,7 @@ feature "Editing profile and application" do
     user = Factory(:user, email: "spanky@cavendish.com")
     profile = Factory(:profile, email: "spanky@cavendish.com", user_id: user.id)
     application = Factory(:apn, profile_id: profile.id)
+    course = Factory(:course)
     sign_in_as!(user)
 
   end
