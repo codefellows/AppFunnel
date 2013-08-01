@@ -1,7 +1,66 @@
-<p>
+
   <% @reviews.each do |review| %>
     <% review.tags.each do |tag| %>
-      <%= tag.name %>
+      <div class="btn"><%= link_to tag.name, sort: tag.id %></div>
     <% end %>
   <% end %>
+
+
+  <h3>Filter Reviews:</h3>
+<p>
+  <%= link_to "All", tags_path %>
 </p>
+<br>
+<table class="table table-hover">
+  <tr>
+    <th>Applicant</th>
+    <th>Education</th>
+    <th>Open source</th>
+    <th>Resume</th>
+    <th>Fit</th>
+    <th>Work experience</th>
+    <th>Weighted Total</th>
+    <th>Exceptional</th>
+    <th>Decision</th>
+  </tr>
+
+<% @selected_reviews.each do |review| %>
+
+  <%
+    row_class = ""
+    case review.decision
+    when "Request Video"
+      row_class = "warning"
+    when "Request Interview"
+      row_class = "success"
+    when "Decline"
+      row_class = "error"
+    end
+   %>
+  <% exceptional = ""
+    case review.exceptional
+    when -1
+      exceptional = "Below Avg"
+    when 0
+      exceptional = "Average"
+    when 1
+      exceptional = "Exceptional"
+    end
+    %>
+
+  <tr class="<%= row_class %>">
+    <td><%= link_to "#{review.apn.profile.first_name} #{review.apn.profile.last_name}", edit_review_path(review) %></td>
+    <td><%= review.education %></td>
+    <td><%= review.contribution %></td>
+    <td><%= review.resume %></td>
+    <td><%= review.fit %></td>
+    <td><%= review.work_experience %></td>
+    <td><%= review.total %></td>
+    <td><%= exceptional %></td>
+    <td><%= review.decision %></td>
+  </tr>
+<% end %>
+</table>
+
+
+

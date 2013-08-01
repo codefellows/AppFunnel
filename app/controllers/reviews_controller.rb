@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
   after_filter :send_email, only: [:create, :update]
   has_scope :decision
+  has_scope :tag_id
+
 
   def index
     @reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
@@ -81,6 +83,13 @@ class ReviewsController < ApplicationController
 
   def manage_tags
     @reviews = Review.all
+
+    if params[:sort].present?
+      @selected_reviews = Review.tagged_with_id(params[:sort])
+
+    else
+      @selected_reviews = @reviews
+    end
   end
 
   private
@@ -112,7 +121,7 @@ class ReviewsController < ApplicationController
     end
 
     def send_email
-      @user = Profile.find(review_params[:user_id])
+      @user = @apn.profile
 
       if @review.decision == "Request Video"
         UserMailer.video_email(@user).deliver
