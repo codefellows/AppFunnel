@@ -11,5 +11,10 @@ FactoryGirl.define do
     experience "greatness is here"
     recommendation "sauce boss"
     profile_id = 1
+    created_at "2013-07-31 22:11:35"
+    updated_at "2013-07-31 22:11:35"
   end
 end
+
+
+

@@ -107,13 +107,6 @@ class ReviewsController < ApplicationController
         :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision, :tag_list, :tag)
     end
 
-    # Need to permit these params for tagging?
-    #   def user_profile_apn_params
-    #   params.require(:user).permit(:tag_list)
-    #   params.require(:apn).permit(:apn_id)
-    #   params.require(:profile).permit(:profile_id)
-    # end
-
     def send_email
       @user = Profile.find(review_params[:user_id])
 

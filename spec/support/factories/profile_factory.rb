@@ -8,6 +8,10 @@ FactoryGirl.define do
     state "WA"
     gender "Male"
     user_id = 1
+    twitter "blah"
+    linkedin "blech"
     github "blerg"
-  end
+    created_at "2013-07-31 22:11:35"
+    updated_at "2013-07-31 22:11:35"
+ end
 end
