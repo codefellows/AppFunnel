@@ -8,12 +8,30 @@ class ReviewsController < ApplicationController
   has_scope :tag_id
 
 
+  # def index
+  #   @reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
+  #   @review_count = Review.count
+  #   @unreviewed_count = Apn.where('"reviewed" = ?', false).count
+  #   @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
+  #     Review.average(attr)
+  #   end
+  # end
   def index
-    @reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
+    @all_tags = Review.tag_counts_on(:tags)
     @review_count = Review.count
     @unreviewed_count = Apn.where('"reviewed" = ?', false).count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
       Review.average(attr)
+    end
+
+    if params[:tag_id]
+       @selected_reviews = Review.tagged_with_id(params[:tag_id])
+    elsif params[:decision]
+      @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
+    elsif params[:sort]
+      @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
+    else
+      @selected_reviews = Review.all
     end
   end
 
@@ -79,17 +97,6 @@ class ReviewsController < ApplicationController
     @apn.update_attribute(:reviewed, false)
     flash[:notice] = "Review was destroyed"
     redirect_to root_path
-  end
-
-  def manage_tags
-    @reviews = Review.all
-
-    if params[:sort].present?
-      @selected_reviews = Review.tagged_with_id(params[:sort])
-
-    else
-      @selected_reviews = @reviews
-    end
   end
 
   private

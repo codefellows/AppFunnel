@@ -24,7 +24,6 @@ class Review < ActiveRecord::Base
   acts_as_taggable
 
   scope :decision, -> decision { where(decision: decision) }
-  #scope :tag_id, -> tag_id { where(tag_id: tag_id)}
   scope :tagged_with_id, lambda { |tag_id| joins(:taggings).where(:taggings => {:tag_id => tag_id}) }
 
   validates :education, :contribution, :resume, :fit, :work_experience,

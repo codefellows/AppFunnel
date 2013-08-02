@@ -14,10 +14,6 @@ AppFunnel::Application.routes.draw do
 
   resources :courses
 
-  get '/manage_tags',
-    to: "reviews#manage_tags",
-    as: 'tags'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

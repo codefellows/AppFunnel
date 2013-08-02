@@ -21,7 +21,7 @@ feature "Viewing Tags" do
     sign_in_as!(admin)
 
     visit '/'
-    click_link "Manage Tags"
+
   end
 
   scenario "Reviewer should be able to view all tags" do
