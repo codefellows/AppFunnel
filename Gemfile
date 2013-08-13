@@ -14,6 +14,7 @@ gem 'has_scope'
 
 gem 'devise', '2.1.0'
 gem 'omniauth-github'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'cancan', '1.6.7'
 
@@ -51,7 +52,7 @@ group :test, :development do
   gem 'capybara', '1.1.2'
   gem 'simplecov', :require => false
   gem 'launchy'
-  gem 'dotenv'
+  gem 'dotenv-rails'
   gem "database_cleaner"
 end
 
@@ -60,6 +61,7 @@ group :development do
   gem 'faker', :require => false
   gem 'better_errors'
   gem 'binding_of_caller'
+
 end
 
 group :production do

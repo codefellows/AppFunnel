@@ -92,7 +92,9 @@ GEM
       railties (~> 3.1)
       warden (~> 1.1.1)
     diff-lcs (1.2.4)
-    dotenv (0.7.0)
+    dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -162,6 +164,9 @@ GEM
     omniauth-github (1.1.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
+    omniauth-linkedin-oauth2 (0.1.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -291,7 +296,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise (= 2.1.0)
-  dotenv
+  dotenv-rails
   email_spec (= 1.2.1)
   factory_girl
   faker
@@ -302,6 +307,7 @@ DEPENDENCIES
   meta_request
   octokit
   omniauth-github
+  omniauth-linkedin-oauth2
   pg
   pry-debugger
   pry-doc
