@@ -23,6 +23,11 @@ If you want sample data with test user account:
 
 ---
 
+New functionality added in July 2013:
+- Reviewers can manage the list of classes that an applicant can apply to.
+- An applicant can apply to 1 or more classes.
+- A reviewer can add tags to an applicant's profile during a review.
+
 The MIT License (MIT)
 
 Copyright (c) 2013 Billy Shih and Meris Williams

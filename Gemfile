@@ -23,6 +23,8 @@ gem 'formtastic-bootstrap'
 gem 'client_side_validations'
 gem 'client_side_validations-formtastic'
 
+gem 'figaro'
+
 
 gem 'octokit'
 

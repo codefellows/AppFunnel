@@ -21,9 +21,9 @@ $baseFontSize: 16px;
 $btnPrimaryBackground: #049cdb;
 $tableBackgroundHover: lighten($btnPrimaryBackground, 45%);
 
-tbody tr th { 
+tbody tr th {
   background-color: none;   /* or whatever color you want */
-} 
+}
 .nav { height: 55px; font-size: 20px; }
 .nav li { line-height: 31px; } // height of image below
 textarea { width:300px; }
@@ -37,14 +37,14 @@ $dtWidth: 200px;
 
 $footerHeight: 200px;
 
-footer { 
-  background: url(/assets/struckaxiom_red.png) #ce2830; 
+footer {
+  background: url(/assets/struckaxiom_red.png) #ce2830;
   box-shadow: inset 4px -4px 4px rgba(0,0,0,0.3),inset -4px 4px 4px rgba(0,0,0,0.3);
-  color: $white; 
+  color: $white;
   height: $footerHeight;
   margin-top: 20px;
-  a { 
-    color: $white; 
+  a {
+    color: $white;
     text-decoration: underline;
   }
 

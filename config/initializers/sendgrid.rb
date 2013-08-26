@@ -1,2 +1,1 @@
-ENV['SENDGRID_USERNAME'] = 'app16581353@heroku.com'
-ENV['SENDGRID_PASSWORD'] = 'gfhho1hs'
+
