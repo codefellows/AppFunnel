@@ -43,7 +43,12 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
+
+    if params[:apn_id]
+      @apn = Apn.find(params[:apn_id])
+    else
+      @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
+    end
 
     if @apn
       @apn_display_attributes = @apn.attributes

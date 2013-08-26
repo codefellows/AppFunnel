@@ -9,7 +9,7 @@
       <th>Created</th>
   <% @apns.each do |apn| %>
     <tr>
-      <td><%= link_to apn.profile.first_name + " " + apn.profile.last_name, new_review_path(apn) %></td>
+      <td><%= link_to apn.profile.first_name + " " + apn.profile.last_name, new_review_path(apn, apn_id: apn.id) %></td>
       <td><%= apn.created_at %></td>
   <% end %>
   </tbody>
