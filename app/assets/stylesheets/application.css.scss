@@ -59,12 +59,8 @@ footer {
   padding-bottom: 1em;
 }
 
-#reviewForm.affix {
-    top: 10px;
-}
-
-#reviewForm.affix-bottom {
+#reviewForm   {
   position: absolute;
-  top: auto;
+  top: 10px;
   bottom: 210;
 }

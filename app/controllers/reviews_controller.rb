@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
       Review.average(attr)
     end
+    @courses = Course.where('"start_date" > ?', Time.zone.today).order("start_date")
 
     if params[:tag_id]
        @selected_reviews = Review.tagged_with_id(params[:tag_id])
