@@ -28,7 +28,6 @@ feature "Editing Reviews" do
     page.select '1', from: "review_fit"
     page.select '1', from: "review_work_experience"
     page.select "Average", from: "review_exceptional"
-    page.select "Decline", from: "review_decision"
     click_button "Update Review"
     page.should have_content("Review was successfully updated.")
 

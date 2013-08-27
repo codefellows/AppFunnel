@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731183104) do
+ActiveRecord::Schema.define(:version => 20130827205223) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130731183104) do
     t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "review_id"
   end
 
   create_table "reviews", :force => true do |t|
@@ -88,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20130731183104) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "total"
-    t.string   "decision"
   end
 
   create_table "taggings", :force => true do |t|

@@ -41,10 +41,10 @@
     <%= apn_f.input :recommendation, label: "Add emails of anyone who would recommend you. The person giving your recommendation will not see any other part of your application." %>
     <% if @profile.apn %>
       <% if @profile.apn.review %>
-        <% if @profile.apn.review.decision == "Request Video"%>
+
           <%= apn_f.input :video, label: "URL to your video:", prepend: 'http://', input_html: { rows: r, class: "input-xxlarge" } %>
           <%= apn_f.input :code_sample, label: "URL to your code sample:", prepend: 'http://', input_html: { rows: r, class: "input-xxlarge" } %>
-        <% end %>
+
       <% end %>
     <% end %>
   <% end %>

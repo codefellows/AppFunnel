@@ -24,7 +24,6 @@ feature "Creating Reviews" do
     within("#review_fit") { select "1" }
     within("#review_work_experience") { select "1" }
     within("#review_exceptional") { select "Average" }
-    within("#review_decision") { select "Decline"}
     click_button "Create Review"
 
     click_link "Oscar"

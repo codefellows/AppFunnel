@@ -20,15 +20,15 @@
 
 class Review < ActiveRecord::Base
   belongs_to :apn
+  has_many :registrations
+  has_many :courses, through: :registrations
 
   acts_as_taggable
 
-  scope :decision, -> decision { where(decision: decision) }
   scope :tagged_with_id, lambda { |tag_id| joins(:taggings).where(:taggings => {:tag_id => tag_id}) }
 
   validates :education, :contribution, :resume, :fit, :work_experience,
     presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
-  validates :decision, presence: true
 
   before_save :calculate_total
 

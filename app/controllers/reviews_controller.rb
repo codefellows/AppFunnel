@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
   before_filter :find_apn, only: [:create, :update]
   before_filter :find_apn_w_rev_id, only: [:edit, :destroy]
   after_filter :send_email, only: [:create, :update]
-  has_scope :decision
   has_scope :tag_id
 
 
@@ -26,8 +25,6 @@ class ReviewsController < ApplicationController
 
     if params[:tag_id]
        @selected_reviews = Review.tagged_with_id(params[:tag_id])
-    elsif params[:decision]
-      @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
     elsif params[:sort]
       @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
     else
@@ -129,15 +126,15 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
-        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :decision, :tag_list, :tag)
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :tag_list, :tag)
     end
 
     def send_email
       @user = @apn.profile
 
-      if @review.decision == "Request Video"
-        UserMailer.video_email(@user).deliver
-      end
+     # if @review.decision == "Request Video"
+     #   UserMailer.video_email(@user).deliver
+     # end
     end
 
 end
