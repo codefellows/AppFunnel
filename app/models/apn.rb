@@ -31,6 +31,9 @@ class Apn < ActiveRecord::Base
 
   validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
 
+  scope :submitted, -> { where(submitted: true) }
+  scope :not_reviewed, -> { where(reviewed: false) }
+
   def button_submit?
     :submit
   end

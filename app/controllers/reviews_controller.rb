@@ -6,19 +6,10 @@ class ReviewsController < ApplicationController
   after_filter :send_email, only: [:create, :update]
   has_scope :tag_id
 
-
-  # def index
-  #   @reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
-  #   @review_count = Review.count
-  #   @unreviewed_count = Apn.where('"reviewed" = ?', false).count
-  #   @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
-  #     Review.average(attr)
-  #   end
-  # end
   def index
     @all_tags = Review.tag_counts_on(:tags)
     @review_count = Review.count
-    @unreviewed_count = Apn.where('"reviewed" = ?', false).count
+    @unreviewed_count = Apn.submitted.not_reviewed.count
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
       Review.average(attr)
     end
@@ -44,7 +35,7 @@ class ReviewsController < ApplicationController
     if params[:apn_id]
       @apn = Apn.find(params[:apn_id])
     else
-      @apn = Apn.where('"reviewed" = ?', false).order("created_at").first
+      @apn = Apn.submitted.not_reviewed.order("created_at").first
     end
 
     if @apn

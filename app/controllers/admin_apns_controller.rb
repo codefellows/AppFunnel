@@ -2,7 +2,7 @@ class AdminApnsController < ApplicationController
   before_filter :authorize_admin
 
   def index
-    @apns = Apn.where('"reviewed" = ?', false).order("created_at")
+    @apns = Apn.submitted.not_reviewed.order("created_at")
   end
 
 private
