@@ -14,21 +14,21 @@
       <dt>Employment</dt>
       <dd><%= @apn.profile.apn.employment %></dd>
     </dl>
-    </div>
-    <div class="span4">
-      <dl class="dl-horizontal">
-        <dt>Github</dt>
-        <dd><%= link_to @apn.profile.github, "http://github.com/" + @apn.profile.github.to_s %></dd>
-        <dt>Twitter</dt>
-        <dd><%= link_to @apn.profile.twitter, "http://twitter.com/" + @apn.profile.twitter.to_s %></dd>
-        <dt>Linkedin</dt>
-        <dd><%= link_to @apn.profile.linkedin, "http://linkedin.com/in/" + @apn.profile.linkedin.to_s %></dd>
-        <dt>Google Plus</dt>
-        <dd><%= link_to "Go to profile", @apn.profile.apn.gplus %></dd>
-        <dt>Skype</dt>
-        <dd><%= @apn.profile.apn.skype %></dd>
-      </dl>
-    </div>
+  </div>
+  <div class="span4">
+    <dl class="dl-horizontal">
+      <dt>Github</dt>
+      <dd><%= link_to @apn.profile.github, "http://github.com/" + sanitize(@apn.profile.github) %></dd>
+      <dt>Twitter</dt>
+      <dd><%= link_to @apn.profile.twitter, "http://twitter.com/" + sanitize(@apn.profile.twitter.to_s) %></dd>
+      <dt>Linkedin</dt>
+      <dd><%= link_to @apn.profile.linkedin, "http://linkedin.com/in/" + sanitize(@apn.profile.linkedin.to_s) %></dd>
+      <dt>Google Plus</dt>
+      <dd><%= link_to "Go to profile", sanitize(@apn.profile.apn.gplus) %></dd>
+      <dt>Skype</dt>
+      <dd><%= @apn.profile.apn.skype %></dd>
+    </dl>
+  </div>
 </div>
 <dl class=long>
  <dt>Classes Applied For</dt>
