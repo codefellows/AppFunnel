@@ -4,7 +4,7 @@ feature "Creating Reviews" do
 
   before do
     profile = Factory(:profile, first_name: "Oscar")
-    application = Factory(:apn, profile_id: profile.id, reviewed: false)
+    application = Factory(:apn, profile_id: profile.id, submitted: true, reviewed: false)
 
     admin = Factory(:admin_user)
     sign_in_as!(admin)
@@ -32,4 +32,5 @@ feature "Creating Reviews" do
     within("h2") {page.should have_content("Reviewing")}
     within("h2") {page.should have_content("Oscar")}
   end
+
 end
