@@ -61,6 +61,12 @@ footer {
 
 #reviewForm   {
   position: absolute;
-  top: 10px;
+  top: auto;
   bottom: 210;
+}
+
+.dl-horizontal > dd:after {
+  display: table;
+  content: "";
+  clear: both;
 }
