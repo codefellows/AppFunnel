@@ -20,6 +20,7 @@
 
 class Review < ActiveRecord::Base
   belongs_to :apn
+
   has_many :registrations
   has_many :courses, through: :registrations
 

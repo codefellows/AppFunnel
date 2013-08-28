@@ -8,7 +8,7 @@
     <th>Accepted</th>
   </tr>
 
-  <% @courses.each do |course| %>
+  <% @upcoming_courses.each do |course| %>
   <tr class="row_class">
     <td><%= link_to course.name, course %></td>
     <td><%= course.course_type %></td>

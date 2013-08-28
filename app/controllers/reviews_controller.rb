@@ -13,14 +13,14 @@ class ReviewsController < ApplicationController
     @averages = ["education", "contribution", "resume", "fit", "work_experience", "total"].map do |attr|
       Review.average(attr)
     end
-    @courses = Course.where('"start_date" > ?', Time.zone.today).order("start_date")
+    @upcoming_courses = Course.future
 
     if params[:tag_id]
        @selected_reviews = Review.tagged_with_id(params[:tag_id])
     elsif params[:sort]
       @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
     else
-      @selected_reviews = Review.all
+      @selected_reviews = Review.includes(apn: :profile)
     end
   end
 

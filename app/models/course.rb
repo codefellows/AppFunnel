@@ -4,8 +4,7 @@ class Course < ActiveRecord::Base
   has_many :applications, through: :registrations
   validates :name, :description, :course_type, presence: true
 
-  # number of applicants: number of registrations where course_id = course.id
-  # number accepted: number of registrations for course_id where decision is accepted
+  scope :future, lambda { where('"start_date" > ?', Time.zone.today).order("start_date") }
 
   def applicants
    Registration.where( "course_id = ?", id).count
