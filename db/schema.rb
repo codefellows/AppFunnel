@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827205223) do
+ActiveRecord::Schema.define(:version => 20130827220746) do
 
   create_table "apns", :force => true do |t|
     t.integer  "applicant_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130827205223) do
     t.string   "course_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "capacity"
   end
 
   create_table "profiles", :force => true do |t|

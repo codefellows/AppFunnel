@@ -59,9 +59,6 @@ footer {
   padding-bottom: 1em;
 }
 
-#reviewForm {
-    top: 10px;
-}
 
 #reviewForm {
   position: absolute;
@@ -70,4 +67,8 @@ footer {
 }
 
 
-
+.dl-horizontal > dd:after {
+  display: table;
+  content: "";
+  clear: both;
+}

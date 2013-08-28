@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <tr>
+    <th>Courses</th>
+    <th>Course Type </th>
+    <th>Start date</th>
+    <th>Slots</th>
+    <th>Applicants</th>
+    <th>Accepted</th>
+  </tr>
+
+  <% @courses.each do |course| %>
+  <tr class="row_class">
+    <td><%= link_to course.name, course %></td>
+    <td><%= course.course_type %></td>
+    <td><%= course.start_date %></td>
+    <td><%= course.capacity %></td>
+    <td> number of applicants: number of registrations where course_id = course.id </td>
+    <td> number accepted: number of registrations where decision is accepted</td>
+  </tr>
+<% end %>
+</table>
