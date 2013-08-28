@@ -28,6 +28,7 @@ class Apn < ActiveRecord::Base
   has_many :registrations
   has_many :courses, through: :registrations
   accepts_nested_attributes_for :registrations
+  delegate :registrations, :to => :review, :prefix => true
 
   validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
 

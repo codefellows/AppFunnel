@@ -118,7 +118,7 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :apn_id, :contribution, :education,
-        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :tag_list, :tag, :registrations)
+        :exceptional, :fit, :note, :resume, :user_id, :work_experience, :tag_list, :tag)
     end
 
     def send_email

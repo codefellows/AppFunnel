@@ -1,13 +1,13 @@
-<div id="reviewForm">
+
 
 <%= semantic_form_for [@review], :html => { :class => "form-horizontal" }, validate: true do |f| %>
 
   <%= f.inputs do %>
 
-  <div style="display:none">
-    <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-    <%= f.input :apn_id, as: :hidden, input_html: { value: @apn.id } %>
-  </div>
+    <div style="display:none">
+      <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+      <%= f.input :apn_id, as: :hidden, input_html: { value: @apn.id } %>
+    </div>
 
     <%= f.input :tag_list, label: "Tags", input_html: { rows: 3, class: "span2"  }  %>
     <!-- <button id = "add_tags">Add tags</button> -->
@@ -20,16 +20,10 @@
     <%= f.input :exceptional, as: :select, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ], label: "Rating", input_html: { value: 0, class: "span2" } %>
 
     <%= f.input :note, label: "Notes", input_html: { rows: 3, class: "span2"  } %>
-
-
-  <h3>Classes Applied for:</h3>
-    <%= f.inputs :for => :registrations do |registration, i| %>
-      <%= registration.input :decision %>
-    <% end %>
-
+  <% end %>
   <%= f.actions do %>
     <%= f.action :submit, :as => :input, button_html: { class: "btn btn-primary btn-large" } %>
   <% end %>
+
 <% end %>
-<% end %>
-</div>
+

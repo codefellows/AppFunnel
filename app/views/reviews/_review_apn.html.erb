@@ -4,6 +4,16 @@
     <%= render 'profile_apn' %>
   </div>
   <div class="span4">
-    <%= render 'form' %>
+      <%= render 'form' %>
+      <br>
+      <h3>Class Registrations</h3>
+      <% @apn.registrations.each do |registration| %>
+        <%= render "course_registrations/registration", :registration => registration %>
+      <% end %>
+
+
   </div>
 </div>
+
+
+

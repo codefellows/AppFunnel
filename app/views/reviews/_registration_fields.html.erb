@@ -1,0 +1,9 @@
+<div class="input">
+    <%= f.input :decision %>
+</div>
+
+
+ <%= f.semantic_fields_for :registrations do |registration| %>
+        <input id="registrations" name="registrations[course_ids][]" type="hidden" value="" />
+        <%= render 'registration_fields', :f => registration %>
+    <% end %>

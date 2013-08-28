@@ -21,7 +21,6 @@
 class Review < ActiveRecord::Base
   belongs_to :apn
 
-
   acts_as_taggable
 
   scope :tagged_with_id, lambda { |tag_id| joins(:taggings).where(:taggings => {:tag_id => tag_id}) }
