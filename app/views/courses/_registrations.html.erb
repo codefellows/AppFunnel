@@ -1,0 +1,24 @@
+<h3>Applicants</h3>
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Decision</th>
+  </tr>
+
+  <% @course_registrations.each do |registration| %>
+  <tr>
+    <% if registration.apn.review %>
+      <td><%= link_to "#{registration.apn.profile.first_name} #{registration.apn.profile.last_name}", edit_review_path(registration.apn.review) %></td>
+    <% else %>
+      <td><%= link_to "#{registration.apn.profile.first_name} #{registration.apn.profile.last_name}", new_review_path(registration.apn, apn_id: registration.apn.id) %></td>
+    <% end %>
+
+    <td><%= registration.apn.profile.email %></td>
+    <td><%= registration.apn.profile.phone_number %></td>
+    <td><%= registration.decision %></td>
+  </tr>
+  <% end %>
+
+</table>

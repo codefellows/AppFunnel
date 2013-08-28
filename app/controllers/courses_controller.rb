@@ -22,8 +22,9 @@ class CoursesController < ApplicationController
   def edit
 
   end
-  def show
 
+  def show
+    @course_registrations = Registration.includes(apn: :profile).where(course_id: @course.id)
   end
 
   def update

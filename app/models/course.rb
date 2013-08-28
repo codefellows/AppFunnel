@@ -7,10 +7,16 @@ class Course < ActiveRecord::Base
   scope :future, lambda { where('"start_date" > ?', Time.zone.today).order("start_date") }
 
   def applicants
+    #all registrations for course instance
+    @registrations = Registration.where( "course_id = ?", id)
+    #all applicants
+  end
+
+  def applicants_count
    Registration.where( "course_id = ?", id).count
   end
 
-  def accepted_applicants
+  def accepted_applicants_count
     Registration.where( course_id: id, decision: "accepted").count
   end
 end
