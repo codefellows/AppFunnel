@@ -8,14 +8,14 @@
     <th>Accepted</th>
   </tr>
 
-  <% @courses.each do |course| %>
+  <% @upcoming_courses.each do |course| %>
   <tr class="row_class">
     <td><%= link_to course.name, course %></td>
     <td><%= course.course_type %></td>
     <td><%= course.start_date %></td>
     <td><%= course.capacity %></td>
-    <td> number of applicants: number of registrations where course_id = course.id </td>
-    <td> number accepted: number of registrations where decision is accepted</td>
+    <td><%= course.applicants_count %></td>
+    <td><%= course.accepted_applicants_count %></td>
   </tr>
 <% end %>
 </table>
