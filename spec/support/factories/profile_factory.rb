@@ -7,11 +7,12 @@ FactoryGirl.define do
     city "Seattle"
     state "WA"
     gender "Male"
-    user_id = 1
     twitter "blah"
     linkedin "blech"
     github "blerg"
     created_at "2013-07-31 22:11:35"
     updated_at "2013-07-31 22:11:35"
+
+    association :user
  end
 end

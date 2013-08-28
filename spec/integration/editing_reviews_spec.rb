@@ -3,17 +3,14 @@ require "spec_helper"
 feature "Editing Reviews" do
 
   before do
-    user = Factory(:user, id: 2)
-    profile = Factory(:profile, id: 1, user_id: user.id)
-    application = Factory(:apn, submitted: true, reviewed: true, id: 1, profile_id: profile.id)
-    review = Factory(:review, id: 1, apn_id: application.id)
+    review = Factory(:review)
     admin = Factory(:admin_user)
 
     sign_in_as!(admin)
 
     visit '/'
 
-    click_link "#{profile.first_name} #{profile.last_name}"
+    click_link "#{review.apn.profile.first_name} #{review.apn.profile.last_name}"
 
   end
 
