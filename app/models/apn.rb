@@ -27,7 +27,7 @@ class Apn < ActiveRecord::Base
   accepts_nested_attributes_for :review
   has_many :registrations
   has_many :courses, through: :registrations
-
+  accepts_nested_attributes_for :registrations
 
   validates :why, :diligent, :experience, :cssfloat, :findout, presence: true, :if => :button_submit?
 

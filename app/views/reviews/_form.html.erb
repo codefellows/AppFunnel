@@ -1,6 +1,6 @@
 <div id="reviewForm">
 
-<%= semantic_form_for @review, :html => { :class => "form-horizontal" }, validate: true do |f| %>
+<%= semantic_form_for [@review], :html => { :class => "form-horizontal" }, validate: true do |f| %>
 
   <%= f.inputs do %>
 
@@ -20,17 +20,16 @@
     <%= f.input :exceptional, as: :select, :collection => [ ["Below Average", -1], ["Average", 0], ["Exceptional", 1] ], label: "Rating", input_html: { value: 0, class: "span2" } %>
 
     <%= f.input :note, label: "Notes", input_html: { rows: 3, class: "span2"  } %>
-    <h3>Courses Registered for:</h3>
-      <% @apn.registrations.each do |registration| %>
 
-        <%= registration.decision %>
-      <% end %>
 
-  <% end %>
+  <h3>Classes Applied for:</h3>
+    <%= f.inputs :for => :registrations do |registration, i| %>
+      <%= registration.input :decision %>
+    <% end %>
 
   <%= f.actions do %>
     <%= f.action :submit, :as => :input, button_html: { class: "btn btn-primary btn-large" } %>
   <% end %>
-
+<% end %>
 <% end %>
 </div>
