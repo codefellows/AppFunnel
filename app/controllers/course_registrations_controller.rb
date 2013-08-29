@@ -2,9 +2,8 @@ class CourseRegistrationsController < ApplicationController
   before_filter :authorize_admin
   before_filter :find_course_registration, only: [:show, :edit, :update, :destroy]
   def update
-    if @registration.update_attributes(registration_params)
+    if @course_registration.update_attributes(course_registration_params)
       flash[ :notice] = "Registration has been updated."
-      redirect_to @course
     else flash[ :alert] = "Registration has not been updated."
       render :action => "edit"
     end
@@ -13,8 +12,8 @@ class CourseRegistrationsController < ApplicationController
 
   private
 
-  def find_review
-    @registration = Registration.find(params[:id])
+  def find_course_registration
+    @course_registration = CourseRegistration.find(params[:id])
   end
 
   def authorize_admin
@@ -23,7 +22,7 @@ class CourseRegistrationsController < ApplicationController
     end
   end
 
-  def registration_params
+  def course_registration_params
     params.permit(:id, :decision)
   end
 

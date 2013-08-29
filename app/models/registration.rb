@@ -1,6 +1,3 @@
 class Registration < ActiveRecord::Base
-  belongs_to :apn
-  belongs_to :course
-
-  belongs_to :review
+  #should be able to delete this model.
 end

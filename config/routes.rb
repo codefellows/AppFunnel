@@ -13,7 +13,7 @@ AppFunnel::Application.routes.draw do
   resources :admin_apns
 
   resources :courses
-  resources :registrations
+  resources :course_registrations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
