@@ -17,9 +17,11 @@ Rename `config/initializers/secret_token.rb.template` to `secret_token.rb` and s
     rake db:schema:load
 
 Create an admin:
+
     rake db:seed
 
 If you want sample data with test user account:
+
     rake db:populate
 
 ---
