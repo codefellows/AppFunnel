@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require rails.validations
 //= require rails.validations.formtastic
+//= require bootstrap-button.js
 //= require bootstrap-alert
 //= require bootstrap-affix.js
 //= require_tree .

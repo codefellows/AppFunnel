@@ -1,0 +1,5 @@
+<% @all_tags.each do |tag| %>
+  <button type = "button" class="btn tag" data-toggle="button"><%= link_to tag.name, tag_id: tag.id, remote: true %></button>
+<% end %>
+<br>
+

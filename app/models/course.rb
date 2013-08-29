@@ -16,6 +16,6 @@ class Course < ActiveRecord::Base
   end
 
   def accepted_applicants_count
-    CourseRegistration.where( course_id: id, decision: "accepted").count
+    CourseRegistration.where( course_id: id, decision: "Accepted").count
   end
 end
