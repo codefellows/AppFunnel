@@ -3,7 +3,6 @@ class CourseRegistrationsController < ApplicationController
   before_filter :find_course_registration, only: [:show, :edit, :update, :destroy]
   def update
     if @course_registration.update_attributes(course_registration_params)
-      flash[ :notice] = "Registration has been updated."
       respond_to do |format|
         format.html { redirect_to reviews_url }
         format.js

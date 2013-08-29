@@ -17,7 +17,8 @@
 
     <td><%= registration.apn.profile.email %></td>
     <td><%= registration.apn.profile.phone_number %></td>
-    <td><%= registration.decision %></td>
+    <td><%= form_for(registration, remote: true) do |f| %>
+      <%= f.select :decision, options_for_select(['','Accepted', 'Declined', 'Request Interview','Request Video', 'Undecided'], selected: registration.decision), {}, :class => "course_registration_decision"%><% end %></td>
   </tr>
   <% end %>
 
