@@ -14,4 +14,8 @@ function placeReviewForm () {
   $('#reviewForm').affix({ offset: { top: 130} });
 }
 
+// get the tag that was clicked
+// add to array of clicked/not clicked
+// send ajax request with array
+// update page when request returns
 

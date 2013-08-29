@@ -12,13 +12,14 @@ The app allows students to apply through a web form and then Code Fellows staff 
 
 Rename `config/initializers/secret_token.rb.template` to `secret_token.rb` and set a random secret token for your application.
 
-Change the `seeds.rb` to create an admin.
-
     bundle
-    rake db:migrate
+    rake db:create
+    rake db:schema:load
+
+Create an admin:
+    rake db:seed
 
 If you want sample data with test user account:
-
     rake db:populate
 
 ---

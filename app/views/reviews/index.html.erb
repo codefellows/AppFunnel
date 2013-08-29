@@ -11,10 +11,7 @@
 
 <br>
 <h3>Filter applicants:</h3>
-
-<% @all_tags.each do |tag| %>
-  <div class="btn"><%= link_to tag.name, tag_id: tag.id %></div>
-<% end %>
+  <%= render 'tags' %>
 
 <br>
 
