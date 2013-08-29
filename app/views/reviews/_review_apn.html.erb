@@ -7,10 +7,19 @@
       <%= render 'form' %>
       <br>
       <h3>Class Registrations</h3>
-       <%= @apn.course_registrations.size %>
+      <table class="table table-hover">
+      <tr>
+        <th>Courses</th>
+        <th>Course Type </th>
+        <th>Start date</th>
+        <th>Decision</th>
+      </tr>
+
+
+
         <%= render @apn.course_registrations%>
 
-
+      </table>
 
   </div>
 </div>
