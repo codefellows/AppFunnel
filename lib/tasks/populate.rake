@@ -39,7 +39,8 @@ namespace :db do
       findout: Faker::Lorem.paragraph(rand(1..5)),
       experience: Faker::Lorem.paragraphs(rand(1..5)).join("\n"),
       recommendation: Faker::Internet.email,
-      submitted: true
+      submitted: true,
+      reviewed: true
     )
 
     example_review = Review.create(
