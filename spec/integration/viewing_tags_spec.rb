@@ -20,11 +20,12 @@ feature "Viewing Tags" do
     review2.tags.each { |tag| page.should have_content(tag) }
   end
 
-  scenario "Review should be able to select a tag and view all reviews with that tag" do
-    puts page.body
+  scenario "Review should be able to select a tag and view all reviews with that tag", js: true do
     click_button "ruby"
-    page.should have_content("#{review2.apn.profile.first_name} #{review2.apn.profile.last_name}")
-    page.should_not have_content("#{review.apn.profile.first_name} #{review.apn.profile.last_name}")
+    The_Dude = "#{review2.apn.profile.first_name} #{review2.apn.profile.last_name}"
+    Jim_Bob = "#{review.apn.profile.first_name} #{review.apn.profile.last_name}"
+    page.should have_css('a', text: The_Dude , visible: true)
+    page.should have_no_css('a', text: Jim_Bob , visible: true)
   end
 
 end

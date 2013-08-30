@@ -56,6 +56,7 @@ group :test, :development do
   gem 'launchy'
   gem 'dotenv-rails'
   gem "database_cleaner"
+  #gem "capybara-webkit"
 end
 
 group :development do
