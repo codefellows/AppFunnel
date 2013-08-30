@@ -25,7 +25,14 @@
   </div>
 
   <%= f.inputs for: [:apn, f.object.apn || Apn.new] do |apn_f| %>
-    <%= apn_f.input :courses, as: :check_boxes, label: "Select Class" %>
+      <table class="table table-hover">
+      <tr>
+        <th>Courses</th>
+        <th>Course Type </th>
+        <th>Start date</th>
+        <th>Register</th>
+      </tr>
+    <%= apn_f.input :courses, as: :check_boxes, label: "Select Class(es)" %>
     <%= apn_f.input :employment, label: "Employment status", as: :select, collection: ["Employed", "Freelance", "Unemployed", "Looking for a job", "Student"], input_html: { rows: r } %>
 
     <%= apn_f.input :gplus, prepend: 'http://', label: "Google Plus Profile URL", input_html: { rows: r } %>

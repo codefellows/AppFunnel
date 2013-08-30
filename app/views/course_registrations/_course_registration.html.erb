@@ -1,8 +1,10 @@
-<%= form_for(course_registration) do |f| %>
-    <%= course_registration.course.name %>
-    <%= f.label :decision %>
-    <%= f.text_field :decision %>
-
-  <%= f.submit %>
+ <tr class="row_class">
+    <td><%= course_registration.course.name %></td>
+    <td><%= course_registration.course.course_type %></td>
+    <td><%= course_registration.course.start_date %></td>
+    <td>
+    <%= form_for(course_registration, remote: true) do |f| %>
+      <%= f.select :decision, options_for_select(['','Accepted', 'Declined', 'Request Interview','Request Video', 'Undecided'], selected: course_registration.decision), {}, :class => "course_registration_decision"%></td>
+  <td></td>
 <% end %>
 

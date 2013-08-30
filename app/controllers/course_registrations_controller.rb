@@ -3,7 +3,10 @@ class CourseRegistrationsController < ApplicationController
   before_filter :find_course_registration, only: [:show, :edit, :update, :destroy]
   def update
     if @course_registration.update_attributes(course_registration_params)
-      flash[ :notice] = "Registration has been updated."
+      respond_to do |format|
+        format.html { redirect_to reviews_url }
+        format.js
+      end
     else flash[ :alert] = "Registration has not been updated."
       render :action => "edit"
     end
@@ -23,7 +26,7 @@ class CourseRegistrationsController < ApplicationController
   end
 
   def course_registration_params
-    params.permit(:id, :decision)
+    params.require(:course_registration).permit(:id, :decision, :apn_id, :course_id)
   end
 
 end
