@@ -16,22 +16,6 @@ class ReviewsController < ApplicationController
     @upcoming_courses = Course.future
     @selected_reviews = Review.includes(apn: :profile)
 
-    respond_to do |format|
-      format.html do
-
-      end
-
-      format.js do
-        if params[:tag_id]
-          @selected_reviews = Review.tagged_with_id(params[:tag_id]).includes(apn: :profile)
-        elsif params[:sort]
-          @selected_reviews = apply_scopes(Review).order(params[:sort]).order(params[:subsort])
-        else
-          @selected_reviews = Review.includes(apn: :profile)
-        end
-      end
-    end
-
   end
 
   def show

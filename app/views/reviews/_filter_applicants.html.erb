@@ -1,5 +1,5 @@
 <table class="table table-hover" id = "applicants_table">
-  <tr>
+  <tr class="selected_row">
     <th>Applicant</th>
     <th>Education</th>
     <th>Open source</th>
@@ -11,7 +11,7 @@
 
   </tr>
 
-  <tr>
+  <tr class="selected_row">
     <td>Avg. of all Applicants</td>
     <% @averages.each do |avg| %>
       <td><%= "%.2f" % avg.to_f %></td>
@@ -36,7 +36,7 @@
   end
   %>
 
-  <tr class="<%= row_class %>">
+  <tr class="<%= row_class %>" data-tag="<%= review.tag_list.map!{ |e| e.gsub(" ", "_" )}.join(" ") %>">
     <td><%= link_to "#{review.apn.profile.first_name} #{review.apn.profile.last_name}", edit_review_path(review) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>

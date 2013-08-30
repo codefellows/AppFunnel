@@ -21,7 +21,8 @@ feature "Viewing Tags" do
   end
 
   scenario "Review should be able to select a tag and view all reviews with that tag" do
-    click_link "ruby"
+    puts page.body
+    click_button "ruby"
     page.should have_content("#{review2.apn.profile.first_name} #{review2.apn.profile.last_name}")
     page.should_not have_content("#{review.apn.profile.first_name} #{review.apn.profile.last_name}")
   end
