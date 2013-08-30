@@ -36,7 +36,7 @@
   end
   %>
 
-  <tr class="<%= row_class %>" data-tag="<%= review.tag_list.map!{ |e| e.gsub(" ", "_" )}.join(" ") %>">
+  <tr class="<%= row_class %>" data-tag="<%= review.tag_list.map!{ |e| e.gsub(" ", "_" )}.join(" ") %> ">
     <td><%= link_to "#{review.apn.profile.first_name} #{review.apn.profile.last_name}", edit_review_path(review) %></td>
     <td><%= review.education %></td>
     <td><%= review.contribution %></td>

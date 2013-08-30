@@ -9,13 +9,13 @@ $(document).ready(function() {
     var tags = JSON.parse(localStorage["tags"]);
 
     $.each(tags, function(index, value) {
-      $( "a:contains('" + value.replace("_", " ") + "')" ).addClass('active');
+      $( "button:contains('" + value.replace(/_/g," ") + "')" ).addClass('active');
         //replace space with underscore
 
         //for each tag, select from the rows that have not already been hidden
         var rows = $('table#applicants_table tr:visible');
         //select all rows with either the tag or the select_row class(header and averages rows)
-        var selected = $("table#applicants_table tr:visible[data-tag*='" + value + "'], .selected_row");
+        var selected = $("table#applicants_table tr:visible[data-tag*='" + value + " '], .selected_row");
         //hide all rows that were not selected
         rows.not( selected ).hide();
     });
@@ -44,7 +44,7 @@ function activateTag () {
       //for each tag, select from the rows that have not already been hidden
       var rows = $('table#applicants_table tr:visible');
       //select all rows with either the tag or the select_row class(header and averages rows)
-      var selected = $("table#applicants_table tr:visible[data-tag*='" + value + "'], .selected_row");
+      var selected = $("table#applicants_table tr:visible[data-tag*='" + value + " '], .selected_row");
       //hide all rows that were not selected
       rows.not( selected ).hide();
     });
@@ -54,10 +54,18 @@ function activateTag () {
 
     var rows = $('table#applicants_table tr:visible');
     //select all rows with either the tag or the select_row class(header and averages rows)
-    var selected = $("table#applicants_table tr:visible[data-tag*='" + value + "'], .selected_row");
+    var selected = $("table#applicants_table tr:visible[data-tag*='" + value + " '], .selected_row");
     //hide all rows that were not selected
     rows.not( selected ).hide();
   }
 
   localStorage["tags"] = JSON.stringify(tags);
 }
+
+//click on on click
+//get from local storage only once
+//change join in _filter_applicants to join with commas or each tag
+//in seperate data attributes or data-tag_name (instead of using whitespace)
+//selected can just be what's different
+//use has class instead of inArray
+//add data tag to button with underscored tag name
