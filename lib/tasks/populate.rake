@@ -58,7 +58,7 @@ namespace :db do
     example_review.save
 
     example_past_course1 = Course.create(
-      name: Faker::Internet.user_name,
+      name: "Ruby on Rails",
       description: Faker::Lorem.paragraph(rand(1..5)),
       desc_url: Faker::Internet.domain_name,
       start_date: "2013-7-04",
@@ -69,7 +69,7 @@ namespace :db do
     )
 
     example_past_course1 = Course.create(
-      name: Faker::Internet.user_name,
+      name: "Python",
       description: Faker::Lorem.paragraph(rand(1..5)),
       desc_url: Faker::Internet.domain_name,
       start_date: "2013-7-01",
