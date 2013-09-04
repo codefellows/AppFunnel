@@ -138,7 +138,7 @@ namespace :db do
 
       course_registrations = CourseRegistration.create(
         apn_id: apn.id,
-        course_id: rand(0..4),
+        course_id: rand(1..4),
         decision: @decisions[rand(0..4)]
       )
 
@@ -200,7 +200,7 @@ namespace :db do
 
       course_registrations = CourseRegistration.create(
         apn_id: apn.id,
-        course_id: rand(0..4),
+        course_id: rand(1..4),
         decision: @decisions[rand(0..4)]
       )
 
