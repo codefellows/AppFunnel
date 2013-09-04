@@ -61,11 +61,13 @@ end
 
 group :development do
   gem 'brakeman', :require => false
-  gem 'faker', :require => false
+
   gem 'better_errors'
   gem 'binding_of_caller'
 
 end
+
+gem 'faker', :require => false
 
 group :production do
   gem 'pg'
