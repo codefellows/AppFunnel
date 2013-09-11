@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   var tags = JSON.parse(localStorage.getItem("tags"));
 
@@ -25,24 +24,36 @@ function activateTag () {
   var tag = $(this).text();
 
   if ($(this).hasClass('active')) {
-    //find the tag in the tags array and remove it
-    tags.splice($.inArray(tag, tags), 1);
+    //if the tag is already selected,
+    deselectTag(tag, tags);
 
-    //show all rows
-    $('table#applicants_table tr').show();
-
-    //hide rows without each of the currently selected set of tags
-    $.each(tags, function(index, tag) {
-      hideRowsWithoutTag(tag);
-    });
-  } else { //If the tag is not currently selected,
-    //add tag to the tags array
-    tags.push(tag);
-    //hide all rows that do not include the tag
-    hideRowsWithoutTag(tag);
+  } else {
+    //If the tag is not currently selected,
+    selectTag(tag, tags);
   }
 
   localStorage.setItem("tags", JSON.stringify(tags));
+}
+
+function deselectTag (tag, tags) {
+  //find the tag in the tags array and remove it
+  tags.splice($.inArray(tag, tags), 1);
+
+  //show all rows
+  $('table#applicants_table tr').show();
+
+  //hide rows without each of the currently selected set of tags
+  $.each(tags, function(index, tag) {
+    hideRowsWithoutTag(tag);
+  });
+
+}
+
+function selectTag (tag, tags) {
+  //add tag to the tags array
+  tags.push(tag);
+  //hide all rows that do not include the tag
+  hideRowsWithoutTag(tag);
 }
 
 function hideRowsWithoutTag (tag) {
